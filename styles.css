@@ -1,12 +1,30 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(-45deg, lightgreen,#D93012, #1423F0, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     margin: 0;
     padding: 0;
     line-height: 1.6;
 }
 
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 header {
-    background: #333;
+    background: linear-gradient(-45deg, lightgreen,#D93012, #1423F0, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     color: #fff;
     padding: 1rem 0;
     text-align: center;
