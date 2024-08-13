@@ -85,6 +85,82 @@ html, body {
     padding-top: 120px;
 }
 
+#projects {
+    position: relative;
+}
+
+.projects-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr; /* Each project box will take the full width */
+    grid-auto-rows: minmax(100px, auto); /* Automatically adjust row height */
+    gap: 150px; /* Adds spacing between rows */
+    width: 50%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.project-box {
+    position: relative;
+    width: 200px; /* Make the box width 45% to leave space for the central line */
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    z-index: 1; /* Ensure the boxes appear above the central line */
+}
+
+.project-box.left {
+    margin-left: -350px;
+}
+
+.project-box.right {
+    margin-left: 850px; /* Align the right box to the right */
+}
+
+.central-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 5px;
+    height: 100%; /* Adjust the height to cover the full area */
+    background-color: #1cd644;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+.project-box .connecting-line {
+    position: absolute;
+    top: 50%;
+    width: 470px;
+    height: 5px;
+    background-color: #1cd644;
+    z-index: 0;
+}
+
+.project-box.left .connecting-line {
+    left: 100%;
+    transform: translateX(10px);
+}
+
+.project-box.right .connecting-line {
+    right: 100%;
+    transform: translateX(-10px);
+}
+
+.connecting-line {
+    position: absolute;
+    top: 50%;
+    width: 500px; /* Increase this value to make the line longer */
+    height: 5px;
+    background-color: #1cd644;
+    z-index: 0;
+}
+
+
+
 #contact-form {
     display: flex;
     flex-direction: column;

@@ -11,7 +11,7 @@ directionalLight.position.set(1, 1, 1).normalize();
 scene.add(directionalLight);
 
 // Set up the camera
-const camera = new THREE.PerspectiveCamera(85, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(85, window.innerWidth / window.innerHeight, 0.9, 10000);
 camera.position.set(0, 1, 5); // Adjusted camera position
 camera.lookAt(0, 0, 0); // Ensure camera is looking at the scene's center
 
@@ -40,10 +40,10 @@ if (createStars) {
     const starColors = [];
     const colorOptions = [0xffffff, 0xffd700, 0x87ceeb, 0xff4500];
 
-    for (let i = 0; i < 10000; i++) {
-        const x = (Math.random() - 0.5) * 2000;
-        const y = (Math.random() - 0.5) * 2000;
-        const z = (Math.random() - 0.5) * 2000;
+    for (let i = 0; i < 25000; i++) {
+        const x = (Math.random() - 0.5) * 20000;
+        const y = (Math.random() - 0.5) * 20000;
+        const z = (Math.random() - 0.5) * 20000;
         starVertices.push(x, y, z);
 
         const color = new THREE.Color(colorOptions[Math.floor(Math.random() * colorOptions.length)]);
