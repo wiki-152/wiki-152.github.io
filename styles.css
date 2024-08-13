@@ -1,70 +1,145 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(-45deg, lightgreen,#D93012, #1423F0, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
+/* Reset styles for html and body */
+html, body {
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    width: 100%;
+    height: 100%; /* Set height to auto to allow scrolling */
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #3f1f1f;
 }
 
-
-@keyframes gradientBG {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+/* Styles for the container elements */
+#background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Keeps the background behind all other content */
+    overflow: hidden; /* Ensures the background doesn't scroll */
 }
 
-header {
-    background: linear-gradient(-45deg, lightgreen,#D93012, #1423F0, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-    color: #fff;
-    padding: 1rem 0;
-    text-align: center;
+#scene-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0; /* Ensure it is behind the navbar and other content */
 }
 
-nav ul {
-    list-style: none;
+#text-overlay {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #ffffff;
+    font-size: 24px;
+    z-index: 1; /* Ensure it appears over the 3D scene */
+}
+
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(30, 30, 30, 0.8); /* Slightly transparent for better visuals */
+    padding: 10px;
+    z-index: 100; /* Ensures the navbar is above all content */
+    display: flex;
+    justify-content: center;
+}
+
+#navbar ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
     padding: 0;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 1rem;
+#navbar ul li {
+    margin: 0 15px;
 }
 
-nav ul li a {
-    color: #fff;
+#navbar ul li a {
+    color: #ffffff;
     text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
 }
 
-section {
-    padding: 2rem;
-    margin: 2rem 0;
+#navbar ul li a:hover {
+    color: #1e90ff;
 }
 
-section h2 {
-    border-bottom: 2px solid #333;
-    padding-bottom: 0.5rem;
-}
-
-footer {
-    background: #333;
-    color: #fff;
+.section {
+    padding: 100px 20px;
+    min-height: 100vh; /* Ensures each section takes up the full viewport height */
+    color: #1cd644;
     text-align: center;
-    padding: 0 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    z-index: 10;
+    position:relative;
 }
 
-a {
-    color: #333;
+#about {
+    padding-top: 120px;
 }
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#contact-form input, #contact-form textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #333;
+    border: none;
+    color: white;
+}
+
+#contact-form button {
+    padding: 10px;
+    background-color: #1e90ff;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+#contact-form button:hover {
+    background-color: #4682b4;
+}
+
+/* Loader container styles */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000; /* Ensure it appears over all other content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Spinner styles */
+.spinner {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+/* Spinner animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
