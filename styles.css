@@ -3,7 +3,7 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%; /* Set height to auto to allow scrolling */
+    height: 100%;
     overflow-x: hidden;
     font-family: Arial, sans-serif;
     background-color: #3f1f1f;
@@ -37,17 +37,31 @@ html, body {
     font-size: 24px;
     z-index: 1; /* Ensure it appears over the 3D scene */
 }
-
+/* Styles for the navbar */
 #navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(30, 30, 30, 0.8); /* Slightly transparent for better visuals */
-    padding: 10px;
-    z-index: 100; /* Ensures the navbar is above all content */
+    background-color: rgba(30, 30, 30, 0.8);
+    padding: 10px 20px; /* Adjusted padding */
+    z-index: 100;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between; /* Distributes space between items */
+    overflow: hidden;
+    box-sizing: border-box; /* Includes padding in the width */
+}
+
+#logo {
+    height: 40px; /* Adjust the height of the logo */
+    margin-right: auto; /* Pushes the logo to the left */
+}
+
+#navbar-name {
+    color: #ffffff;
+    font-size: 20px; /* Adjust as needed */
+    margin-right: auto; /* Pushes the name to the left */
 }
 
 #navbar ul {
@@ -55,21 +69,37 @@ html, body {
     display: flex;
     margin: 0;
     padding: 0;
+    gap: 20px;
 }
 
 #navbar ul li {
-    margin: 0 15px;
+    margin: 0;
 }
 
 #navbar ul li a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 17px;
     transition: color 0.3s ease;
 }
 
 #navbar ul li a:hover {
     color: #1e90ff;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+    #navbar {
+        padding: 10px 20px; /* Adjust padding for smaller screens */
+    }
+
+    #navbar ul li a {
+        font-size: 16px; /* Adjust font size for smaller screens */
+    }
+
+    #navbar ul li {
+        margin: 0 10px; /* Adjust spacing between items for smaller screens */
+    }
 }
 
 .section {
@@ -78,12 +108,15 @@ html, body {
     color: #1cd644;
     text-align: center;
     z-index: 10;
-    position:relative;
+    position: relative;
 }
 
 #about {
-    padding-top: 120px;
+    padding: 100px 20px; /* Adjust this padding if necessary */
+    margin: 0 auto; /* Center align the section */
+    text-align: center; /* Center text */
 }
+
 
 #projects {
     position: relative;
@@ -159,35 +192,6 @@ html, body {
     z-index: 0;
 }
 
-
-
-#contact-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-#contact-form input, #contact-form textarea {
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #333;
-    border: none;
-    color: white;
-}
-
-#contact-form button {
-    padding: 10px;
-    background-color: #1e90ff;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
-
-#contact-form button:hover {
-    background-color: #4682b4;
-}
-
 /* Loader container styles */
 #loader {
     position: fixed;
@@ -218,4 +222,61 @@ html, body {
     100% { transform: rotate(360deg); }
 }
 
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+    .projects-container {
+        width: 90%;
+        grid-template-columns: 1fr;
+        gap: 30px; /* Less spacing between rows on mobile */
+    }
 
+    .project-box {
+        width: 90%;
+        margin: 0 auto; /* Center the project boxes */
+    }
+
+    .project-box.left {
+        margin-left: 0; /* Reset margin for mobile view */
+    }
+
+    .project-box.right {
+        margin-left: 0; /* Reset margin for mobile view */
+    }
+
+    .project-box .connecting-line {
+        display: none; /* Hide connecting lines on mobile */
+    }
+
+    .central-line {
+        display: none; /* Hide central line on mobile */
+    }
+}
+
+
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#contact-form input, #contact-form textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #333;
+    border: none;
+    color: white;
+}
+
+#contact-form button {
+    padding: 10px;
+    background-color: #1e90ff;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+#contact-form button:hover {
+    background-color: #4682b4;
+}
