@@ -64,36 +64,33 @@ dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
 const loader = new THREE.GLTFLoader();
 loader.setDRACOLoader(dracoLoader);
 
-let jetModel, jetModel2;
+let jetModel;
 function loadModel() {
     return new Promise((resolve, reject) => {
         loader.load('models/fyre_jet_ship_compressed.glb', (gltf) => {
             jetModel = gltf.scene;
 
-            // Adjust materials for brightness and reflection
+            // Assuming the model has multiple materials, adjust the brightness of all materials
             jetModel.traverse((child) => {
                 if (child.isMesh) {
                     const material = child.material;
 
+                    // Check if material is of type MeshStandardMaterial or MeshPhongMaterial
                     if (material.isMeshStandardMaterial || material.isMeshPhongMaterial) {
-                        material.emissive = new THREE.Color(0xaaaaaa);
-                        material.emissiveIntensity = 0.125;
-                        material.metalness = 0.85;
-                        material.roughness = 0.5;
+                        // Increase the emissive intensity for a glow effect
+                        material.emissive = new THREE.Color(0xaaaaaa); // Adjust this color as needed
+                        material.emissiveIntensity = 0.125; // Adjust the intensity to make the model brighter
+
+                        // Optionally, adjust other material properties
+                        material.metalness = 0.85; // Increase metalness for more reflectivity
+                        material.roughness = 0.5; // Adjust roughness
                     }
                 }
             });
 
-            // Scale and position the first jet model
             jetModel.scale.set(0.3, 0.3, 0.3);
-            jetModel.position.set(-20, 1, 0); // Start position of the first jet
+            jetModel.position.set(-1, 1, 0);
             rotationGroup.add(jetModel);
-
-            // Create a second jet model by cloning the first one
-            jetModel2 = jetModel.clone();
-            jetModel2.position.set(-25, 1, -2); // Position it slightly behind the first jet
-            rotationGroup.add(jetModel2);
-
             resolve(jetModel);
 
             // Hide the loader
@@ -109,7 +106,6 @@ loadModel().then(() => {
 }).catch((error) => {
     console.error('Error loading model:', error);
 });
-
 // Create a clock to keep track of time
 const clock = new THREE.Clock();
 
@@ -125,23 +121,13 @@ function animate() {
     // Get the elapsed time since the last frame
     const delta = clock.getDelta();
 
-    // Update the position of the first jet model
+    // Update the position of the jet model to move from left to right
     if (jetModel) {
         jetModel.position.x += moveSpeed * delta;
 
         // Reset position when the model moves off-screen
         if (jetModel.position.x > endX) {
             jetModel.position.x = startX;
-        }
-    }
-
-    // Update the position of the second jet model
-    if (jetModel2) {
-        jetModel2.position.x += moveSpeed * delta;
-
-        // Reset position when the second model moves off-screen
-        if (jetModel2.position.x > endX) {
-            jetModel2.position.x = startX - 5; // Slight delay compared to the first jet
         }
     }
 
@@ -153,6 +139,8 @@ function animate() {
 }
 
 animate();
+
+
 
 // Handle window resize
 window.addEventListener('resize', () => {
@@ -178,22 +166,8 @@ window.addEventListener('wheel', (event) => {
     } else {
         console.warn('Jet model is not loaded yet.');
     }
-
-    if (jetModel2) {
-        const deltaY = event.deltaY;
-        const windowHeight = window.innerHeight;
-
-        // Calculate new positions based on scroll
-        const x = jetModel2.position.x - deltaY / windowHeight;
-        const y = jetModel2.position.y - deltaY / windowHeight;
-
-        jetModel2.position.set(x, y, 0);
-    } else {
-        console.warn('Second jet model is not loaded yet.');
-    }
 });
 
-// Handle keydown event
 window.addEventListener('keydown', (event) => {
     if (jetModel) {
         const key = event.key;
@@ -216,28 +190,6 @@ window.addEventListener('keydown', (event) => {
     } else {
         console.warn('Jet model is not loaded yet.');
     }
-
-    if (jetModel2) {
-        const key = event.key;
-        const moveDistance = 0.05;
-
-        let x = jetModel2.position.x;
-        let y = jetModel2.position.y;
-
-        if (key === 'ArrowUp') {
-            y += moveDistance;
-        } else if (key === 'ArrowDown') {
-            y -= moveDistance;
-        } else if (key === 'ArrowLeft') {
-            x -= moveDistance;
-        } else if (key === 'ArrowRight') {
-            x += moveDistance;
-        }
-
-        jetModel2.position.set(x, y, 0);
-    } else {
-        console.warn('Second jet model is not loaded yet.');
-    }
 });
 
 // Handle scroll event
@@ -256,23 +208,30 @@ window.addEventListener('scroll', () => {
     } else {
         console.warn('Jet model is not loaded yet.');
     }
-
-    if (jetModel2) {
-        const scrollY = window.scrollY;
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
-
-        // Calculate the new position of the second jet model
-        const t = scrollY / (documentHeight - windowHeight); // Normalized scroll position
-        const x = 2 * (1 - t) - 1; // Map scroll position to x-axis (-1 to 1)
-        const y = 1 - 2 * t; // Map scroll position to y-axis (1 to -1)
-
-        jetModel2.position.set(x, y, 0); // Update model position based on scroll
-    } else {
-        console.warn('Second jet model is not loaded yet.');
-    }
 });
 
 // Debugging
 console.log("main.js loaded");
 console.log("Scene children:", scene.children);
+
+
+
+/*
+Old animate with ship moving in circle 
+// Create a clock to keep track of time
+const clock = new THREE.Clock();
+
+// Animation loop
+function animate() {
+    requestAnimationFrame(animate);
+
+    // Get the elapsed time since the last frame
+    const delta = clock.getDelta();
+
+    // Adjust rotation speed based on time elapsed
+    rotationGroup.rotation.y += 0.25 * delta; // Adjust the multiplier to control the speed
+
+    renderer.render(scene, camera);
+}
+
+animate(); */
