@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Muhammad Waqas - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <div id="scene-container">
@@ -15,12 +17,12 @@
     <div id="loader">
         <div class="spinner"></div>
     </div>
-    
+
 
     <nav id="navbar">
         <div id="navbar-name">
             <a href="#">
-                <img id = "logo" src="logo/Logo-WIW4rIsuY-transformed.png" alt="Logo">
+                <img id="logo" src="logo/Logo-WIW4rIsuY-transformed.png" alt="Logo">
             </a>
         </div>
         <ul>
@@ -44,22 +46,36 @@
         <div id="projects" class="section">
             <h2>My Projects</h2>
             <div class="projects-container">
+
                 <div class="project-box left">
                     <div class="connecting-line"></div>
-                    
-                    <h3>Project 1</h3>
-                    
-                    <p>Details about project 1.</p>
+
+                    <div class="project-card">
+                        <a href="social-media-details.html">
+                            <img src="images/11111.png" alt="Social Media Platform Thumbnail" class="project-thumbnail">
+                            <div class="project-info">
+                                <h3>Social Media Platform</h3>
+                                <p>A unique platform connecting students globally.</p>
+                            </div>
+                        </a>
+                    </div>
+
                 </div>
 
                 <div class="central-line"></div>
-                
+
                 <div class="project-box right">
                     <div class="connecting-line"></div>
-                    
-                    <h3>Project 2</h3>
-                    
-                    <p>Details about project 2.</p>
+
+                    <div class="project-card">
+                        <a href="social-media-details.html">
+                            <img src="images/11111.png" alt="Social Media Platform Thumbnail" class="project-thumbnail">
+                            <div class="project-info">
+                                <h3>Meow Platform</h3>
+                                <p>A unique platform connecting students globally.</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="project-box left">
@@ -67,35 +83,61 @@
                     <h3>Project 3</h3>
                     <p>Details about project 3.</p>
                 </div>
-        
+
                 <div class="project-box right">
                     <div class="connecting-line"></div>
                     <h3>Project 4</h3>
                     <p>Details about project 4.</p>
                 </div>
-                
+
+                <div class="project-box left">
+                    <div class="connecting-line"></div>
+                    <h3>Project 5</h3>
+                    <p>Details about project 5.</p>
+                </div>
+
+                <div class="project-box right">
+                    <div class="connecting-line"></div>
+                    <h3>Project 6</h3>
+                    <p>Details about project 6.</p>
+                </div>
+
+                <div class="project-box left">
+                    <div class="connecting-line"></div>
+                    <h3>Project 7</h3>
+                    <p>Details about project 5.</p>
+                </div>
+
+                <div class="project-box right">
+                    <div class="connecting-line"></div>
+                    <h3>Project 8</h3>
+                    <p>Details about project 6.</p>
+                </div>
+
                 <div class="central-line"></div>
 
-                
+
             </div>
         </div>
-        
-        
+
+
 
         <div id="contact" class="section">
             <h2>Contact Me</h2>
-            <form id="contact-form">
-                <input type="text" placeholder="Name" required>
-                
-                <input type="email" placeholder="Email" required>
-                
-                <input type="text" placeholder="Phone Number">
+            <!-- action=/contact for express server-->
+            <form id="contact-form" action="https://formspree.io/f/xovanqdw" method="POST">
 
-                <textarea placeholder="Message" required></textarea>
-                
+                <input type="text" id="name" name="name" placeholder="Name" required>
+
+                <input type="email" id="email" name="email" placeholder="Email" required>
+
+                <input type="text" id="phone" name="phone" placeholder="Phone Number">
+
+                <textarea id="message" name="message" placeholder="Message" required></textarea>
+
 
                 <button type="submit">Send Message</button>
-                
+
             </form>
         </div>
     </div>
@@ -105,4 +147,5 @@
     <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/DRACOLoader.js"></script>
     <script src="main.js"></script>
 </body>
+
 </html>

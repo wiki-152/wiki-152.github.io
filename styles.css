@@ -136,7 +136,7 @@ html, body {
 
 .project-box {
     position: relative;
-    width: 200px; /* Make the box width 45% to leave space for the central line */
+    width: 390px; /* Make the box width 45% to leave space for the central line */
     padding: 20px;
     background-color: #333;
     color: white;
@@ -146,11 +146,11 @@ html, body {
 }
 
 .project-box.left {
-    margin-left: -350px;
+    margin-left: -340px;
 }
 
 .project-box.right {
-    margin-left: 850px; /* Align the right box to the right */
+    margin-left: 650px; /* Align the right box to the right */
 }
 
 .central-line {
@@ -167,7 +167,7 @@ html, body {
 .project-box .connecting-line {
     position: absolute;
     top: 50%;
-    width: 470px;
+    width: 270px;
     height: 5px;
     background-color: #1cd644;
     z-index: 0;
@@ -190,6 +190,59 @@ html, body {
     height: 5px;
     background-color: #1cd644;
     z-index: 0;
+}
+
+
+.project-card {
+    width: 350px;
+    margin: 20px;
+    border: none; /* 1px solid #ddd*/
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(4, 230, 11, 0.812);
+}
+
+/* Styles for the project-card links */
+.project-card a {
+    text-decoration: none; /* Remove the underline */
+    color: #ffffff; /* Change the text color to white */
+    transition: color 0.3s ease, transform 0.3s ease; /* Add a transition effect */
+}
+
+.project-card a:hover {
+    color: #1e90ff; /* Change the text color on hover */
+    transform: scale(1.05); /* Slightly scale up the link on hover */
+}
+
+/* Optional: Enhance the project title */
+.project-card h3 {
+    font-size: 24px; /* Increase the font size */
+    margin-bottom: 10px; /* Add some space below the title */
+}
+
+/* Optional: Enhance the project description */
+.project-card p {
+    font-size: 16px; /* Adjust the font size */
+    color: #cccccc; /* Slightly lighter color for the description */
+}
+
+
+.project-thumbnail {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.project-info {
+    padding: 20px;
+    text-align: center;
 }
 
 /* Loader container styles */
