@@ -120,6 +120,8 @@ html, body {
 
 #projects {
     position: relative;
+    padding: 100px 20px;
+    text-align: center;
 }
 
 .projects-container {
@@ -136,13 +138,17 @@ html, body {
 
 .project-box {
     position: relative;
-    width: 390px; /* Make the box width 45% to leave space for the central line */
+    width: 420px; /* Make the box width 45% to leave space for the central line */
     padding: 20px;
-    background-color: #333;
+    background: linear-gradient(135deg, #201b1b, #2d1f1f); /* Linear gradient from red to a lighter red */
+    opacity: 0.75;
     color: white;
     border-radius: 20px;
     text-align: center;
     z-index: 1; /* Ensure the boxes appear above the central line */
+    margin: 0 auto;
+    /* Don't Remove
+    box-sizing:border-box;*/
 }
 
 .project-box.left {
@@ -150,7 +156,7 @@ html, body {
 }
 
 .project-box.right {
-    margin-left: 650px; /* Align the right box to the right */
+    margin-left: 620px; /* Align the right box to the right */
 }
 
 .central-line {
@@ -167,7 +173,7 @@ html, body {
 .project-box .connecting-line {
     position: absolute;
     top: 50%;
-    width: 270px;
+    width: 240px;
     height: 5px;
     background-color: #1cd644;
     z-index: 0;
@@ -194,7 +200,7 @@ html, body {
 
 
 .project-card {
-    width: 350px;
+    width: 380px;
     margin: 20px;
     border: none; /* 1px solid #ddd*/
     border-radius: 10px;
@@ -275,16 +281,18 @@ html, body {
     100% { transform: rotate(360deg); }
 }
 
-/* Media Queries for Responsive Design */
+/* Media Queriessss for Responsive Design */
 @media screen and (max-width: 768px) {
     .projects-container {
-        width: 90%;
+        width: 100%;
         grid-template-columns: 1fr;
         gap: 30px; /* Less spacing between rows on mobile */
+        padding: 0;
     }
 
     .project-box {
         width: 90%;
+        max-width: none;
         margin: 0 auto; /* Center the project boxes */
     }
 
