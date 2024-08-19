@@ -29,10 +29,15 @@ scene.add(rotationGroup);
 let stars;
 const createStars = true; // Set to true if you want to enable stars
 
+function getStarSize() {
+    const screenWidth = window.innerWidth;
+    return screenWidth <= 768 ? 5.0 : 0.5; // Larger stars on mobile, smaller on desktop
+}
+
 if (createStars) {
     const starGeometry = new THREE.BufferGeometry();
     const starMaterial = new THREE.PointsMaterial({
-        size: 0.5,
+        size: getStarSize(),
         vertexColors: true,
     });
 
@@ -57,6 +62,21 @@ if (createStars) {
     rotationGroup.add(stars); // Add stars to the rotation group
 }
 
+// Update star size on resize
+window.addEventListener('resize', () => {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(window.devicePixelRatio); // Adjust pixel ratio on resize
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+
+    // Update star size based on screen width
+    if (stars) {
+        stars.material.size = getStarSize();
+    }
+});
+
 // Create DRACOLoader and GLTFLoader
 const dracoLoader = new THREE.DRACOLoader();
 dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
@@ -64,7 +84,7 @@ dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
 const loader = new THREE.GLTFLoader();
 loader.setDRACOLoader(dracoLoader);
 
-let jetModel, jetModel2;
+let jetModel, jetModel2, jetModel3;
 function loadModel() {
     return new Promise((resolve, reject) => {
         loader.load('models/fyre_jet_ship_compressed.glb', (gltf) => {
@@ -93,6 +113,11 @@ function loadModel() {
             jetModel2 = jetModel.clone();
             jetModel2.position.set(-25, 1, -2); // Position it slightly behind the first jet
             rotationGroup.add(jetModel2);
+
+            // Create a third jet model by cloning the first one
+            jetModel3 = jetModel.clone();
+            jetModel3.position.set(-30, 1, -4); // Position it slightly behind the second jet
+            rotationGroup.add(jetModel3);
 
             resolve(jetModel);
 
@@ -142,6 +167,16 @@ function animate() {
         // Reset position when the second model moves off-screen
         if (jetModel2.position.x > endX) {
             jetModel2.position.x = startX - 5; // Slight delay compared to the first jet
+        }
+    }
+
+    // Update the position of the third jet model
+    if (jetModel3) {
+        jetModel3.position.x += moveSpeed * delta;
+
+        // Reset position when the third model moves off-screen
+        if (jetModel3.position.x > endX) {
+            jetModel3.position.x = startX - 10; // Slight delay compared to the second jet
         }
     }
 
