@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MWSK-Portfolio</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:ital,wght@1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+
+    <style>
+        @keyframes slideDown {
+            from {
+                transform: translateY(0%);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(100%);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0%);
+                opacity: 1;
+            }
+        }
+
+        .blinder {
+            background: #1B1B1B;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            animation: slideDown 4.5s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        body {
+            background: linear-gradient(270deg, #000000, #131515);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        main {
+            background-image: url('./images/bg22.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .profile {
+            width: 250px;
+            height: 250px;
+            border-radius: 20px;
+            margin-right: 20px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .hover-glow:hover {
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
+        }
+
+        .bg-blur {
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 20px;
+        }
+
+        /* CSS for right-aligned icons */
+.icon-container {
+    display: flex;
+    justify-content: flex-end; /* Aligns icons to the right */
+    align-items: center; /* Keeps icons vertically centered */
+    font-size: 24px; /* Icon size */
+    gap: 20px; /* Spacing between icons */
+}
+
+    </style>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'Lato', 'sans-serif'],
+                        italic1: ['"Playfair Display"', 'serif'],
+                        italic2: ['"Dancing Script"', 'cursive'],
+                        unique: ['Poppins', 'sans-serif'],
+
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-unique bg-gray-900 text-white flex flex-col overflow-hidden">
+
+    <div class="blinder"></div>
+
+    <header class="p-3">
+        <nav class="container mx-auto flex justify-between items-center">
+
+            <h1 class="text-2xl font-bold">
+                <img src="./images/logo.png" alt="logo" class="w-[10.5rem] h-auto"> <!--[12.5rem]-->
+            </h1>
+
+            <ul class="flex space-x-4">
+                <li><a href="index.html"
+                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Home</a></li>
+                <li><a href="profile.html"
+                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Profile</a>
+                </li>
+                <li><a href="gallery.html"
+                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Gallery</a>
+                </li>
+                <li><a href="projects.html"
+                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Projects</a>
+                </li>
+                <li><a href="career_goals.html"
+                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Career
+                        Goals</a></li>
+                <li><a href="skills_interests.html"
+                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Skills &
+                        Interests</a></li>
+                <li><a href="contact.html"
+                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Contact</a>
+                </li>
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <main class="font-italic1 container mx-auto flex-grow flex items-center justify-center px-4 relative">
+
+        <div class="bg-blur rounded-lg p-4 shadow-lg flex items-center">
+
+            <img src="./images/profilepic1.png" alt="Muhammad Waqas Shahid Khan" class="profile rounded-4xl mr-4">
+
+            <div class="flex flex-col justify-center text-left space-y-2 max-w-4xl">
+                <h1 class="text-6xl font-bold text-gray-200">Muhammad Waqas Shahid Khan</h1>
+                <h2 class="text-4xl text-gray-400">Software Engineer</h2>
+                <p class="text-2xl text-gray-400">
+                    A passionate Software engineer with expertise in Web Development.
+                    Committed to creating efficient and innovative solutions.
+                    Graduated from Cadet College Hasanabdal and persuing Bachelors in Software Engineering.
+                </p>
+
+                <!-- Social media icons -->
+                <div class="icon-container">
+                    <a href="#" class="text-gray-600 hover:text-blue-400 transition-colors duration-800 ease-in-out">
+                        <i
+                            class="fab fa-twitter transform hover:scale-125 transition-transform duration-800 ease-in-out"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mwaqas152/" class="text-gray-600 hover:text-blue-400 transition-colors duration-800 ease-in-out">
+                        <i
+                            class="fab fa-linkedin-in transform hover:scale-125 transition-transform duration-800 ease-in-out"></i>
+                    </a>
+                    <a href="https://github.com/wiki-152" class="text-gray-600 hover:text-red-500 transition-colors duration-800 ease-in-out">
+                        <i class="fab fa-github transform hover:scale-125 transition-transform duration-800 ease-in-out"></i>
+                    </a>
+                    <a href="https://leetcode.com/wiki_152/" class="text-gray-600 hover:text-yellow-500 transition-colors duration-800 ease-in-out">
+                        <i class="fas fa-code transform hover:scale-125 transition-transform duration-800 ease-in-out"></i>
+                    </a>
+                
+                </div>
+
+            </div>
+    </main>
+
+
+
+    <footer class="p-3">
+        <div class="container mx-auto text-center text-gray-400">
+            &copy; 2024 Muhammad Waqas Shahid Khan
+        </div>
+    </footer>
+</body>
+
+</html>
