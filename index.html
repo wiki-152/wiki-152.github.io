@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&display=swap"rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
@@ -27,7 +27,6 @@
             }
         }
 
-        /*Should actually cause */
         @keyframes slideUp {
             from {
                 transform: translateY(-100%);
@@ -75,11 +74,6 @@
             width: 100%;
         }
 
-        /*header, main, footer {
-            animation: slideUp 4.5s ease-out forwards;
-            animation-delay: 0.5s;
-        }*/
-
         .profile {
             width: 250px;
             height: 250px;
@@ -107,9 +101,7 @@
                         italic1: ['"Playfair Display"', 'serif'],
                         italic2: ['"Dancing Script"', 'cursive'],
                         unique: ['Poppins', 'sans-serif'],
-
                     }
-
                 }
             }
         }
@@ -122,12 +114,19 @@
 
     <header class="p-3">
         <nav class="container mx-auto flex justify-between items-center">
-
             <h1 class="text-2xl font-bold">
-                <img src="./images/logo.png" alt="logo" class="w-[10.5rem] h-auto"> <!--[12.5rem]-->
+                <img src="./images/logo.png" alt="logo" class="w-[10.5rem] h-auto">
             </h1>
 
-            <ul class="flex space-x-4">
+            <button id="menu-button" class="md:hidden text-white focus:outline-none" aria-expanded="false" title="Three Lines">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <ul id="nav-links" class="hidden md:flex space-x-4">
                 <li><a href="index.html"
                         class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Home</a></li>
                 <li><a href="profile.html"
@@ -143,33 +142,72 @@
                         class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Career
                         Goals</a></li>
                 <li><a href="skills_interests.html"
-                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Skills &
+                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Skills &amp;
                         Interests</a></li>
                 <li><a href="contact.html"
                         class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Contact</a>
                 </li>
             </ul>
         </nav>
-    </header>
 
+        <!-- Mobile Navigation Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 shadow-md transition-all duration-300">
+            <ul class="flex flex-col space-y-2 p-4">
+                <li><a href="index.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-2">Home</a></li>
+                <li><a href="profile.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-2">Profile</a></li>
+                <li><a href="gallery.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-2">Gallery</a>
+                </li>
+                <li><a href="projects.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-2">Projects</a>
+                </li>
+                <li><a href="career_goals.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-2">Career Goals</a>
+                </li>
+                <li><a href="skills_interests.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-2">Skills &amp;
+                        Interests</a></li>
+                <li><a href="contact.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-2">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </header>
 
     <main class="container mx-auto flex-grow flex items-center justify-center px-4 relative">
         <div class="text-center max-w-2xl">
             <h1 class="font-italic1 italic text-4xl leading-relaxed">
                 A passionate student at FAST-NUCES, pursuing a Bachelor of Science in Software Engineering. As a
-                software engineer, I am dedicated to crafting efficient, innovative solutions and enhancing my expertise in 
+                software engineer, I am dedicated to crafting efficient, innovative solutions and enhancing my expertise in
                 development technologies.
             </h1>
         </div>
     </main>
-    
-
 
     <footer class="p-3">
         <div class="container mx-auto text-center text-gray-400">
             &copy; 2024 Muhammad Waqas Shahid Khan
         </div>
     </footer>
+
+    <script>
+        // JavaScript for Mobile Menu Toggle
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Optional: Close the mobile menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!menuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
 </body>
 
 </html>
