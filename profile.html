@@ -7,19 +7,14 @@
     <title>MWSK-Portfolio</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
-
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:ital,wght@1,400;1,700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-
     <!-- Tailwind CSS -->
     <link href="https://cdn.tailwindcss.com" rel="stylesheet">
 
@@ -143,7 +138,7 @@
         <nav class="container mx-auto flex justify-between items-center">
 
             <h1 class="text-2xl font-bold">
-                <img src="./images/logo.png" alt="logo" class="w-[10.5rem] h-auto"> <!--[12.5rem]-->
+                <img src="./images/logo.png" alt="logo" class="w-[10rem] sm:w-44 md:w-48 lg:w-52 xl:w-56 h-auto"> <!--[12.5rem]-->
             </h1>
 
             <ul class="flex space-x-4">
@@ -170,7 +165,34 @@
             </ul>
 
         </nav>
+
+        <!-- Mobile Navigation Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black-800 shadow-md transition-all duration-300 slide">
+            <ul class="flex flex-col space-y-2 p-4">
+                <li><a href="index.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Home</a></li>
+                <li><a href="profile.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Profile</a></li>
+                <li><a href="gallery.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Gallery</a>
+                </li>
+                <li><a href="projects.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Projects</a>
+                </li>
+                <li><a href="career_goals.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Career Goals</a>
+                </li>
+                <li><a href="skills_interests.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Skills &amp;
+                        Interests</a></li>
+                <li><a href="contact.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Contact</a>
+                </li>
+            </ul>
+        </div>
+
     </header>
+    
 
 
     <main class="font-italic1 container mx-auto flex-grow flex items-center justify-center px-4 relative">
