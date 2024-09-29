@@ -9,8 +9,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&display=swap"rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:ital,wght@1,400;1,700&display=swap"rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:ital,wght@1,400;1,700&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 
@@ -77,19 +79,20 @@
         }
 
         #mobile-menu.hidden {
-    display: none;
-    animation: none;  /* Reset the animation when hidden */
-}
+            display: none;
+            animation: none;
+            /* Reset the animation when hidden */
+        }
 
-#mobile-menu.show {
-    display: block;
-    animation: slideDownMenu 1.5s ease-in forwards;
-}
+        #mobile-menu.show {
+            display: block;
+            animation: slideDownMenu 1.5s ease-in forwards;
+        }
 
-#mobile-menu.hide {
-    animation: slideUpMenu 2.5s ease-out forwards;
-    /* Transition end listener will handle the display none */
-}
+        #mobile-menu.hide {
+            animation: slideUpMenu 2.5s ease-out forwards;
+            /* Transition end listener will handle the display none */
+        }
 
         /* Add classes to trigger the animations */
         .show-menu {
@@ -119,7 +122,7 @@
             opacity: 1;
             /* Make it visible */
         }
-        
+
         .blinder {
             background: #1B1B1B;
             width: 100%;
@@ -144,7 +147,7 @@
             overflow: auto;
         }
 
-    
+
         main {
             background-image: url('./images/bg22.jpg');
             background-size: cover;
@@ -184,8 +187,6 @@
         .hover-glow:hover {
             text-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
         }
-
-        
     </style>
 
     <script>
@@ -303,30 +304,30 @@
         const mobileMenu = document.getElementById('mobile-menu');
 
         menuButton.addEventListener('click', () => {
-    if (mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.remove('hidden', 'hide');
-        mobileMenu.classList.add('show');
-    } else {
-        mobileMenu.classList.replace('show', 'hide');
-        mobileMenu.addEventListener('animationend', () => {
-            if (mobileMenu.classList.contains('hide')) {
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('hide'); // Ensure the menu is hidden after animation
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden', 'hide');
+                mobileMenu.classList.add('show');
+            } else {
+                mobileMenu.classList.replace('show', 'hide');
+                mobileMenu.addEventListener('animationend', () => {
+                    if (mobileMenu.classList.contains('hide')) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('hide'); // Ensure the menu is hidden after animation
+                    }
+                }, { once: true });
             }
-        }, { once: true });
-    }
-});
+        });
 
-// Close the mobile menu when clicking outside
-document.addEventListener('click', (event) => {
-    if (!menuButton.contains(event.target) && !mobileMenu.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.replace('show', 'hide');
-        mobileMenu.addEventListener('animationend', () => {
-            mobileMenu.classList.add('hidden');
-            mobileMenu.classList.remove('hide');
-        }, { once: true });
-    }
-});
+        // Close the mobile menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!menuButton.contains(event.target) && !mobileMenu.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.replace('show', 'hide');
+                mobileMenu.addEventListener('animationend', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('hide');
+                }, { once: true });
+            }
+        });
 
     </script>
 </body>
