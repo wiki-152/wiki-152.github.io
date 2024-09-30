@@ -50,6 +50,30 @@
             }
         }
 
+        @keyframes slideDownMenu {
+            from {
+                transform: translateY(20%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(20%);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUpMenu {
+            from {
+                transform: translateY(20%);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(20%);
+                opacity: 0.5;
+            }
+        }
+
         .blinder {
             background: #1B1B1B;
             width: 100%;
@@ -61,6 +85,65 @@
             animation: slideDown 4.5s ease-out forwards;
             animation-delay: 0.5s;
         }
+
+        #mobile-menu {
+            background: #1B1B1B;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            animation: slideDownMenu 0.5s ease-out forwards;
+            animation-delay: 0s;
+            opacity: 0;
+        }
+
+        #mobile-menu.hidden {
+            display: none;
+            animation: none;
+            /* Reset the animation when hidden */
+        }
+
+        #mobile-menu.show {
+            display: block;
+            animation: slideDownMenu 1.5s ease-in forwards;
+        }
+
+        #mobile-menu.hide {
+            animation: slideUpMenu 2.5s ease-out forwards;
+            /* Transition end listener will handle the display none */
+        }
+
+        /* Add classes to trigger the animations */
+        .show-menu {
+            animation: slideDownMenu 1.5s ease-in-out forwards;
+            max-height: 300px;
+            opacity: 1;
+        }
+
+        .hide-menu {
+            animation: slideUpMenu 1.5s ease-in-out forwards;
+        }
+
+        .slide {
+            transition: max-height 2s ease, opacity 0.5s ease;
+            /* Smooth transition */
+            overflow: hidden;
+            /* Hide overflow */
+            max-height: 0;
+            /* Start closed */
+            opacity: 0;
+            /* Start invisible */
+        }
+
+        .slide.show {
+            max-height: 300px;
+            /* Set a max-height that accommodates the menu items */
+            opacity: 1;
+            /* Make it visible */
+        }
+
 
         body {
             background: linear-gradient(270deg, #000000, #131515);
@@ -86,6 +169,30 @@
             overflow: hidden;
             width: 100%;
             height: calc(100vh - 120px);
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 1rem;
+            text-align: center;
+            background-color: #131515;
+            color: #fff;
+        }
+
+        /* Add mobile-specific styles */
+        @media only screen and (max-width: 768px) {
+            footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                padding: 1rem;
+                text-align: center;
+                background-color: #000000;
+                color: #fff;
+            }
+
         }
 
         .image-slider {
@@ -166,17 +273,26 @@
     </script>
 </head>
 
-<body class="font-unique bg-gray-900 text-white flex flex-col overflow-hidden">
+<body class="font-unique bg-gray-900 text-white flex flex-col overflow-hidden min-h-screen">
 
     <div class="blinder"></div>
 
     <header class="p-3">
-        <nav class="container mx-auto flex justify-between items-center">
+        <nav class="container mx-auto flex justify-between items-center flex-row">
             <h1 class="text-2xl font-bold">
                 <img src="./images/logo.png" alt="logo" class="w-[10rem] sm:w-44 md:w-48 lg:w-52 xl:w-56 h-auto"> <!--[12.5rem]-->
             </h1>
 
-            <ul class="flex space-x-4">
+            <button id="menu-button" class="md:hidden text-white focus:outline-none" aria-expanded="false"
+                title="Three Lines">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+
+            <ul id="nav-links" class="hidden md:flex space-x-4">
                 <li><a href="index.html"
                         class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Home</a></li>
                 <li><a href="profile.html" class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Profile</a></li>
@@ -197,10 +313,36 @@
                 </li>
             </ul>
         </nav>
+
+        <!-- Mobile Navigation Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black-800 shadow-md transition-all duration-300 slide">
+            <ul class="flex flex-col space-y-2 p-4">
+                <li><a href="index.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Home</a></li>
+                <li><a href="profile.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Profile</a></li>
+                <li><a href="gallery.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Gallery</a>
+                </li>
+                <li><a href="projects.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Projects</a>
+                </li>
+                <li><a href="career_goals.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Career Goals</a>
+                </li>
+                <li><a href="skills_interests.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Skills &amp;
+                        Interests</a></li>
+                <li><a href="contact.html"
+                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Contact</a>
+                </li>
+            </ul>
+        </div>
     </header>
 
-    <main class="container mx-auto flex-grow flex items-center justify-center px-4 relative">
-        <div class="image-slider">
+    <!--<main class="container mx-auto flex-grow flex items-center justify-center px-4 relative">-->
+    <main class="flex-grow flex items-center justify-center px-4 relative">
+            <div class="image-slider">
             <div class="image-box">
                 <div class="image-part">
                     <img src="./images/p1.png" alt="Project 1">
@@ -387,6 +529,40 @@
             &copy; 2024 Muhammad Waqas Shahid Khan
         </div>
     </footer>
+
+
+    <script>
+        // JavaScript for Mobile Menu Toggle
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden', 'hide');
+                mobileMenu.classList.add('show');
+            } else {
+                mobileMenu.classList.replace('show', 'hide');
+                mobileMenu.addEventListener('animationend', () => {
+                    if (mobileMenu.classList.contains('hide')) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('hide'); // Ensure the menu is hidden after animation
+                    }
+                }, { once: true });
+            }
+        });
+
+        // Close the mobile menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!menuButton.contains(event.target) && !mobileMenu.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.replace('show', 'hide');
+                mobileMenu.addEventListener('animationend', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('hide');
+                }, { once: true });
+            }
+        });
+
+    </script>
 </body>
 
 </html>
