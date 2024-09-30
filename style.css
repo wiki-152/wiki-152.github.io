@@ -6,7 +6,7 @@ body {
 
 /* Header and Navbar Styles */
 nav {
-    display: flex;
+    display:flex;
     justify-content: space-between;
     align-items: center;
 }
@@ -23,8 +23,11 @@ li {
 }
 
 /* Media Queries for Responsiveness */
-@media (max-width: 640px) {
+@media (max-width: 480px) {
     /* Mobile styles */
+    #logo{
+        display: none;
+    }
     nav {
         flex-direction: column;
         align-items: flex-start;
