@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MWSK-Portfolio</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&display=swap"rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        @keyframes slideRightToLeft {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                /*before -1500%*/
+                transform: translateX(-700%);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(0%);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(100%);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(-100%);
+                opacity: -1;
+            }
+
+            to {
+                transform: translateY(0%);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDownMenu {
+            from {
+                transform: translateY(20%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(20%);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUpMenu {
+            from {
+                transform: translateY(20%);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(20%);
+                opacity: 0.5;
+            }
+        }
+
+        #mobile-menu {
+            background: #1B1B1B;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            animation: slideDownMenu 0.5s ease-out forwards;
+            animation-delay: 0s;
+            opacity: 0;
+        }
+
+        #mobile-menu.hidden {
+            display: none;
+            animation: none;
+            /* Reset the animation when hidden */
+        }
+
+        #mobile-menu.show {
+            display: block;
+            animation: slideDownMenu 1.5s ease-in forwards;
+        }
+
+        #mobile-menu.hide {
+            animation: slideUpMenu 2.5s ease-out forwards;
+            /* Transition end listener will handle the display none */
+        }
+
+        /* Add classes to trigger the animations */
+        .show-menu {
+            animation: slideDownMenu 1.5s ease-in-out forwards;
+            max-height: 300px;
+            opacity: 1;
+        }
+
+        .hide-menu {
+            animation: slideUpMenu 1.5s ease-in-out forwards;
+        }
+
+        .slide {
+            transition: max-height 2s ease, opacity 0.5s ease;
+            /* Smooth transition */
+            overflow: hidden;
+            /* Hide overflow */
+            max-height: 0;
+            /* Start closed */
+            opacity: 0;
+            /* Start invisible */
+        }
+
+        .slide.show {
+            max-height: 300px;
+            /* Set a max-height that accommodates the menu items */
+            opacity: 1;
+            /* Make it visible */
+        }
+
+        .blinder {
+            background: #1B1B1B;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            animation: slideDown 4.5s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        body {
+            background: linear-gradient(270deg, #000000, #131515);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+        }
+
+        main {
+            background-image: url('./images/bg22.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 1rem;
+            text-align: center;
+            background-color: #131515;
+            color: #fff;
+        }
+
+        /* Add mobile-specific styles */
+        @media only screen and (max-width: 768px) {
+            footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                padding: 1rem;
+                text-align: center;
+                background-color: #000000;
+                color: #fff;
+            }
+
+        }
+
+        .image-slider {
+            display: flex;
+            gap: 20px;
+            animation: slideRightToLeft 500s linear infinite;
+            width: 200%;
+
+        }
+
+        .image-box {
+            opacity: 0.9;
+            width: 400px;
+            height: 450px;
+            background-color: #000000;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            overflow: hidden;
+            transition: transform 0.6s ease;
+        }
+
+        /* Consistent transition for states*/
+        .image-box:hover {
+            transform: scale(1.15);
+            transition: transform 0.6s ease;
+        }
+
+        .image-part {
+            flex: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .image-part img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .text-part {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 1.2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .hover-glow:hover {
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
+        }
+
+    </style>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'Lato', 'sans-serif'],
+                        italic1: ['"Playfair Display"', 'serif'],
+                        italic2: ['"Dancing Script"', 'cursive'],
+                        unique: ['Poppins', 'sans-serif'],
+
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-unique bg-gray-900 text-white flex flex-col overflow-hidden min-h-screen">
+
+    <div class="blinder"></div>
+
+    <header class="p-3">
+        <nav class="container mx-auto flex justify-between items-center flex-row">
+            <h1 class="text-2xl font-bold">
+                <img src="./images/logo.png" alt="logo" class="w-[10rem] sm:w-44 md:w-48 lg:w-52 xl:w-56 h-auto">
+                <!--[12.5rem]-->
+            </h1>
+
+            <button id="menu-button" class="md:hidden text-white focus:outline-none" aria-expanded="false"
+                title="Three Lines">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+
+            <ul id="nav-links" class="hidden md:flex space-x-4">
+                <li><a href="index.html"
+                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Home</a></li>
+                <li><a href="profile.html"
+                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Profile</a>
+                </li>
+                <li><a href="gallery.html"
+                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Gallery</a>
+                </li>
+                <li><a href="projects.html"
+                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Projects</a>
+                </li>
+                <li><a href="career_goals.html"
+                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Career
+                        Goals</a></li>
+                <li><a href="skills_interests.html"
+                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Skills &
+                        Interests</a></li>
+                <li><a href="contact.html"
+                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Contact</a>
+                </li>
+            </ul>
+
+            <!-- Mobile Navigation Dropdown -->
+            <div id="mobile-menu" class="hidden md:hidden bg-black-800 shadow-md transition-all duration-300 slide">
+                <ul class="flex flex-col space-y-2 p-4">
+                    <li><a href="index.html"
+                            class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Home</a>
+                    </li>
+                    <li><a href="profile.html"
+                            class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Profile</a>
+                    </li>
+                    <li><a href="gallery.html"
+                            class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Gallery</a>
+                    </li>
+                    <li><a href="projects.html"
+                            class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Projects</a>
+                    </li>
+                    <li><a href="career_goals.html"
+                            class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Career
+                            Goals</a></li>
+                    <li><a href="skills_interests.html"
+                            class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Skills &
+                            Interests</a></li>
+                    <li><a href="contact.html"
+                            class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!--<main class="font-italic1 container mx-auto flex-grow flex items-center justify-center px-4 relative">-->
+        <main class="flex-grow flex items-center justify-center px-4 relative">
+        <div class="image-slider">
+
+            <div class="image-box">
+                <div class="image-part">
+                    <img src="./images/1.jpg" alt="Image 1">
+                </div>
+                <div class="text-part">
+                    <p>Lauterbrunnen</p>
+                </div>
+            </div>
+            <div class="image-box">
+                <div class="image-part">
+                    <img src="./images/2.jpg" alt="Image 2">
+                </div>
+                <div class="text-part">
+                    <p>Lausanne</p>
+                </div>
+            </div>
+            <div class="image-box">
+                <div class="image-part">
+                    <img src="./images/7.jpg" alt="Image 3">
+                </div>
+                <div class="text-part">
+                    <p>Zug</p>
+                </div>
+            </div>
+            <div class="image-box">
+                <div class="image-part">
+                    <img src="./images/8.jpg" alt="Image 4">
+                </div>
+                <div class="text-part">
+                    <p>Oeschinensee</p>
+                </div>
+            </div>
+            <div class="image-box">
+                <div class="image-part">
+                    <img src="./images/9.jpeg" alt="Image 5">
+                </div>
+                <div class="text-part">
+                    <p>Schweiz</p>
+                </div>
+            </div>
+            <div class="image-box">
+                <div class="image-part">
+                    <img src="./images/6.jpg" alt="Image 6">
+                </div>
+                <div class="text-part">
+                    <p>Zug</p>
+                </div>
+            </div>
+            <div class="image-box">
+                <div class="image-part">
+                    <img src="./images/8.jpg" alt="Image 7">
+                </div>
+                <div class="text-part">
+                    <p>Luzern</p>
+                </div>
+            </div>
+            <div class="image-box">
+                <div class="image-part">
+                    <img src="./images/9.jpeg" alt="Image 8">
+                </div>
+                <div class="text-part">
+                    <p>Genf</p>
+                </div>
+            </div>
+
+            <!-- Duplicate set-->
+            <div class="image-box">
+                <div class="image-part">
+                    <img src="./images/1.jpg" alt="Image 1">
+                </div>
+                <div class="text-part">
+                    <p>Lauterbrunnen</p>
+                </div>
+            </div>
+            <div class="image-box">
+                <div class="image-part">
+                    <img src="./images/2.jpg" alt="Image 2">
+                </div>
+                <div class="text-part">
+                    <p>Lausanne</p>
+                </div>
+            </div>
+            <div class="image-box">
+                <div class="image-part">
+                    <img src="./images/3.1.jpg" alt="Image 3">
+                </div>
+                <div class="text-part">
+                    <p>Zug</p>
+                </div>
+            </div>
+            <div class="image-box">
+                <div class="image-part">
+                    <img src="./images/bg11.jpg" alt="Image 4">
+                </div>
+                <div class="text-part">
+                    <p>Oeschinensee</p>
+                </div>
+            </div>
+            <div class="image-box">
+                <div class="image-part">
+                    <img src="./images/3.jpg" alt="Image 5">
+                </div>
+                <div class="text-part">
+                    <p>Schweiz</p>
+                </div>
+            </div>
+            <div class="image-box">
+                <div class="image-part">
+                    <img src="./images/6.jpg" alt="Image 6">
+                </div>
+                <div class="text-part">
+                    <p>Zug</p>
+                </div>
+            </div>
+            <div class="image-box">
+                <div class="image-part">
+                    <img src="./images/8.jpg" alt="Image 7">
+                </div>
+                <div class="text-part">
+                    <p>Luzern</p>
+                </div>
+            </div>
+            <div class="image-box">
+                <div class="image-part">
+                    <img src="./images/9.jpeg" alt="Image 8">
+                </div>
+                <div class="text-part">
+                    <p>Genf</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="p-3">
+        <div class="container mx-auto text-center text-gray-400">
+            &copy; 2024 Muhammad Waqas Shahid Khan
+        </div>
+    </footer>
+</body>
+
+<script>
+    // JavaScript for Mobile Menu Toggle
+const menuButton = document.getElementById('menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+
+menuButton.addEventListener('click', () => {
+    if (mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.remove('hidden', 'hide');
+        mobileMenu.classList.add('show');
+    } else {
+        mobileMenu.classList.replace('show', 'hide');
+        mobileMenu.addEventListener('animationend', () => {
+            if (mobileMenu.classList.contains('hide')) {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('hide'); // Ensure the menu is hidden after animation
+            }
+        }, { once: true });
+    }
+});
+
+// Close the mobile menu when clicking outside
+document.addEventListener('click', (event) => {
+    if (!menuButton.contains(event.target) && !mobileMenu.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.replace('show', 'hide');
+        mobileMenu.addEventListener('animationend', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('hide');
+        }, { once: true });
+    }
+});
+</script>
+
+</html>
