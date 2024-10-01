@@ -11,8 +11,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&display=swap"rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:ital,wght@1,400;1,700&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
@@ -50,30 +52,6 @@
             }
         }
 
-        @keyframes slideDownMenu {
-            from {
-                transform: translateY(20%);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(20%);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideUpMenu {
-            from {
-                transform: translateY(20%);
-                opacity: 1;
-            }
-
-            to {
-                transform: translateY(20%);
-                opacity: 0.5;
-            }
-        }
-
         .blinder {
             background: #1B1B1B;
             width: 100%;
@@ -85,65 +63,6 @@
             animation: slideDown 4.5s ease-out forwards;
             animation-delay: 0.5s;
         }
-
-        #mobile-menu {
-            background: #1B1B1B;
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 9999;
-            animation: slideDownMenu 0.5s ease-out forwards;
-            animation-delay: 0s;
-            opacity: 0;
-        }
-
-        #mobile-menu.hidden {
-            display: none;
-            animation: none;
-            /* Reset the animation when hidden */
-        }
-
-        #mobile-menu.show {
-            display: block;
-            animation: slideDownMenu 1.5s ease-in forwards;
-        }
-
-        #mobile-menu.hide {
-            animation: slideUpMenu 2.5s ease-out forwards;
-            /* Transition end listener will handle the display none */
-        }
-
-        /* Add classes to trigger the animations */
-        .show-menu {
-            animation: slideDownMenu 1.5s ease-in-out forwards;
-            max-height: 300px;
-            opacity: 1;
-        }
-
-        .hide-menu {
-            animation: slideUpMenu 1.5s ease-in-out forwards;
-        }
-
-        .slide {
-            transition: max-height 2s ease, opacity 0.5s ease;
-            /* Smooth transition */
-            overflow: hidden;
-            /* Hide overflow */
-            max-height: 0;
-            /* Start closed */
-            opacity: 0;
-            /* Start invisible */
-        }
-
-        .slide.show {
-            max-height: 300px;
-            /* Set a max-height that accommodates the menu items */
-            opacity: 1;
-            /* Make it visible */
-        }
-
 
         body {
             background: linear-gradient(270deg, #000000, #131515);
@@ -157,7 +76,7 @@
         }
 
         main {
-            
+
             background-image: url('./images/bg22.jpg');
             background-size: cover;
             background-position: center;
@@ -212,17 +131,38 @@
             flex-direction: column;
             flex-shrink: 0;
             overflow: hidden;
-            transition: transform 0.6s ease; 
+            transition: transform 0.6s ease;
         }
 
         .image-box:hover {
             transform: scale(1.15);
             transition: transform 0.6s ease;
-            
+
         }
 
+        /* Add mobile-specific styles */
+        @media only screen and (max-width: 768px) {
+            footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                padding: 1rem;
+                text-align: center;
+                background-color: #000000;
+                color: #fff;
+            }
+
+            .image-box {
+                width: 300px;
+                /* Adjust width for smaller screens */
+                height: 350px;
+                /* Adjust height for smaller screens */
+            }
+        }
+
+
         .image-part {
-            flex: 2;
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -238,6 +178,7 @@
         .text-part {
             flex: 1;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
@@ -245,11 +186,14 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
 
+
         .hover-glow:hover {
             text-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
         }
 
-        
+        input[type="checkbox"]:checked~ul {
+            display: block;
+        }
     </style>
 
     <script>
@@ -273,85 +217,72 @@
     </script>
 </head>
 
-<body class="font-unique bg-gray-900 text-white flex flex-col overflow-hidden min-h-screen">
+<body class="font-unique bg-gray-900 text-white flex flex-col overflow-hidden">
 
     <div class="blinder"></div>
 
     <header class="p-3">
-        <nav class="container mx-auto flex justify-between items-center flex-row">
-            <h1 class="text-2xl font-bold">
-                <img src="./images/logo.png" alt="logo" class="w-[10rem] sm:w-44 md:w-48 lg:w-52 xl:w-56 h-auto"> <!--[12.5rem]-->
-            </h1>
+        <nav class="container mx-auto flex justify-between items-center relative z-50">
 
-            <button id="menu-button" class="md:hidden text-white focus:outline-none" aria-expanded="false"
-                title="Three Lines">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-                    </path>
-                </svg>
-            </button>
+            <div class="flex justify-between items-center w-full">
 
-            <ul id="nav-links" class="hidden md:flex space-x-4">
-                <li><a href="index.html"
-                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Home</a></li>
-                <li><a href="profile.html" class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Profile</a></li>
-                <li><a href="gallery.html"
-                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Gallery</a>
-                </li>
-                <li><a href="projects.html"
-                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Projects</a>
-                </li>
-                <li><a href="career_goals.html"
-                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Career
-                        Goals</a></li>
-                <li><a href="skills_interests.html"
-                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Skills &
-                        Interests</a></li>
-                <li><a href="contact.html"
-                        class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300">Contact</a>
-                </li>
-            </ul>
+                <h1 class="text-2xl font-bold">
+                    <img src="./images/logo.png" alt="logo" class="w-[10rem] sm:w-44 md:w-48 lg:w-52 xl:w-56 h-auto">
+                </h1>
+
+                <!-- Mobile menu toggle -->
+                <input type="checkbox" id="menu-toggle" class="hidden">
+                <label for="menu-toggle" class="block md:hidden cursor-pointer">
+                    <div class="space-y-2">
+                        <span class="block w-8 h-1 bg-white"></span>
+                        <span class="block w-8 h-1 bg-white"></span>
+                        <span class="block w-8 h-1 bg-white"></span>
+                    </div>
+                </label>
+
+                <!-- Menu for mobile -->
+                <ul
+                    class="hidden md:flex space-x-4 top-[3.15rem] md:space-x-4 absolute md:relative md:top-0 w-full bg-black md:bg-transparent md:w-auto flex-col md:flex-row ld:top-[3.25rem]">
+                    <li><a href="index.html"
+                            class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300 block p-2">Home</a>
+                    </li>
+                    <li><a href="profile.html"
+                            class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300 block p-2">Profile</a>
+                    </li>
+                    <li><a href="gallery.html"
+                            class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300 block p-2">Gallery</a>
+                    </li>
+                    <li><a href="projects.html"
+                            class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300 block p-2">Projects</a>
+                    </li>
+                    <li><a href="career_goals.html"
+                            class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300 block p-2">Career
+                            Goals</a></li>
+                    <li><a href="skills_interests.html"
+                            class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300 block p-2">Skills
+                            & Interests</a></li>
+                    <li><a href="contact.html"
+                            class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300 block p-2">Contact</a>
+                    </li>
+                </ul>
+
+            </div>
         </nav>
-
-        <!-- Mobile Navigation Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-black-800 shadow-md transition-all duration-300 slide">
-            <ul class="flex flex-col space-y-2 p-4">
-                <li><a href="index.html"
-                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Home</a></li>
-                <li><a href="profile.html"
-                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Profile</a></li>
-                <li><a href="gallery.html"
-                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Gallery</a>
-                </li>
-                <li><a href="projects.html"
-                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Projects</a>
-                </li>
-                <li><a href="career_goals.html"
-                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Career Goals</a>
-                </li>
-                <li><a href="skills_interests.html"
-                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Skills &amp;
-                        Interests</a></li>
-                <li><a href="contact.html"
-                        class="block hover:text-primary hover-glow hover:bg-gray-700 rounded px-3 py-1">Contact</a>
-                </li>
-            </ul>
-        </div>
     </header>
 
-    <!--<main class="container mx-auto flex-grow flex items-center justify-center px-4 relative">-->
-    <main class="flex-grow flex items-center justify-center px-4 relative">
-            <div class="image-slider">
+    <!--<main class="container mx-auto flex items-center justify-center px-4 relative"> OLD-->
+    <main class="font-italic1 flex-grow flex items-center justify-center px-4 relative">
+        <div class="image-slider">
             <div class="image-box">
                 <div class="image-part">
-                    <img src="./images/p1.png" alt="Project 1">
+                    <img src="./images/cc.png" alt="Project 1">
                 </div>
-                <div class="text-part">
-                    <h3 class="font-bold">Project Title 1</h3>
-                    <p>Short description of the project goes here.</p>
-                    <p>Technologies Used: HTML, CSS, JavaScript</p>
-                    <a href="https://github.com/yourusername/project1" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-blue-500">
+                <div class="text-part p-3">
+                    <h3 class="font-bold text-lg md:text-xl">CampusConnect</h3> <br>
+                    <p class="text-sm md:text-base">A university social media platform built with Spring Boot.</p><br>
+                    <p class="text-sm md:text-base">Tech: Java, Spring Boot, HTML, CSS, JavaScript</p><br>
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                        class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
@@ -359,13 +290,14 @@
             
             <div class="image-box">
                 <div class="image-part">
-                    <img src="./images/p1.png" alt="Project 1">
+                    <img src="./images/pc.png" alt="Project 2">
                 </div>
-                <div class="text-part">
-                    <h3 class="font-bold">Project Title 1</h3>
-                    <p>Short description of the project goes here.</p>
-                    <p>Technologies Used: HTML, CSS, JavaScript</p>
-                    <a href="https://github.com/yourusername/project1" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-blue-500">
+                <div class="text-part p-3">
+                    <h3 class="font-bold text-lg md:text-xl">Parental Control</h3> <br>
+                    <p class="text-sm md:text-base">Designed UI/UX for a parental control application.</p><br>
+                    <p class="text-sm md:text-base">Tech: Figma, HTML, CSS</p><br>
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                        class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
@@ -373,13 +305,14 @@
             
             <div class="image-box">
                 <div class="image-part">
-                    <img src="./images/p1.png" alt="Project 1">
+                    <img src="./images/p1.png" alt="Project 3">
                 </div>
-                <div class="text-part">
-                    <h3 class="font-bold">Project Title 1</h3>
-                    <p>Short description of the project goes here.</p>
-                    <p>Technologies Used: HTML, CSS, JavaScript</p>
-                    <a href="https://github.com/yourusername/project1" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-blue-500">
+                <div class="text-part p-3">
+                    <h3 class="font-bold text-lg md:text-xl">2D Maze Game</h3> <br>
+                    <p class="text-sm md:text-base">A simple 2D maze game developed using C++.</p><br>
+                    <p class="text-sm md:text-base">Tech: C++</p><br>
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                        class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
@@ -387,13 +320,14 @@
             
             <div class="image-box">
                 <div class="image-part">
-                    <img src="./images/p1.png" alt="Project 1">
+                    <img src="./images/p1.png" alt="Project 4">
                 </div>
-                <div class="text-part">
-                    <h3 class="font-bold">Project Title 1</h3>
-                    <p>Short description of the project goes here.</p>
-                    <p>Technologies Used: HTML, CSS, JavaScript</p>
-                    <a href="https://github.com/yourusername/project1" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-blue-500">
+                <div class="text-part p-3">
+                    <h3 class="font-bold text-lg md:text-xl">Tic Tac Toe</h3> <br>
+                    <p class="text-sm md:text-base">A classic Tic Tac Toe game built with Java.</p><br>
+                    <p class="text-sm md:text-base">Tech: Java</p><br>
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                        class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
@@ -401,13 +335,14 @@
             
             <div class="image-box">
                 <div class="image-part">
-                    <img src="./images/p1.png" alt="Project 1">
+                    <img src="./images/wa.png" alt="Project 5">
                 </div>
-                <div class="text-part">
-                    <h3 class="font-bold">Project Title 1</h3>
-                    <p>Short description of the project goes here.</p>
-                    <p>Technologies Used: HTML, CSS, JavaScript</p>
-                    <a href="https://github.com/yourusername/project1" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-blue-500">
+                <div class="text-part p-3">
+                    <h3 class="font-bold text-lg md:text-xl">Weather App</h3> <br>
+                    <p class="text-sm md:text-base">A web application to display weather information.</p><br>
+                    <p class="text-sm md:text-base">Tech: HTML, CSS, JavaScript, API</p><br>
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                        class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
@@ -415,13 +350,14 @@
             
             <div class="image-box">
                 <div class="image-part">
-                    <img src="./images/p1.png" alt="Project 1">
+                    <img src="./images/p1.png" alt="Project 6">
                 </div>
-                <div class="text-part">
-                    <h3 class="font-bold">Project Title 1</h3>
-                    <p>Short description of the project goes here.</p>
-                    <p>Technologies Used: HTML, CSS, JavaScript</p>
-                    <a href="https://github.com/yourusername/project1" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-blue-500">
+                <div class="text-part p-3">
+                    <h3 class="font-bold text-lg md:text-xl">Task Manager</h3> <br>
+                    <p class="text-sm md:text-base">A task management application built with React.</p><br>
+                    <p class="text-sm md:text-base">Tech: React, Node.js, MongoDB</p><br>
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                        class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
@@ -429,13 +365,14 @@
             
             <div class="image-box">
                 <div class="image-part">
-                    <img src="./images/p1.png" alt="Project 1">
+                    <img src="./images/p1.png" alt="Project 7">
                 </div>
-                <div class="text-part">
-                    <h3 class="font-bold">Project Title 1</h3>
-                    <p>Short description of the project goes here.</p>
-                    <p>Technologies Used: HTML, CSS, JavaScript</p>
-                    <a href="https://github.com/yourusername/project1" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-blue-500">
+                <div class="text-part p-3">
+                    <h3 class="font-bold text-lg md:text-xl">E-commerce Site</h3> <br>
+                    <p class="text-sm md:text-base">An online shopping platform built with Django.</p><br>
+                    <p class="text-sm md:text-base">Tech: Flutter</p><br>
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                        class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
@@ -443,85 +380,144 @@
             
             <div class="image-box">
                 <div class="image-part">
-                    <img src="./images/p1.png" alt="Project 1">
+                    <img src="./images/p1.png" alt="Project 8">
                 </div>
-                <div class="text-part">
-                    <h3 class="font-bold">Project Title 1</h3>
-                    <p>Short description of the project goes here.</p>
-                    <p>Technologies Used: HTML, CSS, JavaScript</p>
-                    <a href="https://github.com/yourusername/project1" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-blue-500">
+                <div class="text-part p-3">
+                    <h3 class="font-bold text-lg md:text-xl">Chat Application</h3> <br>
+                    <p class="text-sm md:text-base">A real-time chat application using Socket.IO.</p><br>
+                    <p class="text-sm md:text-base">Tech: Node.js, Socket.IO, HTML, CSS</p><br>
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                        class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
             </div>
             
+            
+            
+
 
             <!-- Duplicate set of images for seamless looping -->
             <div class="image-box">
                 <div class="image-part">
-                    <img src="p1.png" alt="Image 1">
+                    <img src="./images/cc.png" alt="Project 1">
                 </div>
-                <div class="text-part">
-                    <p>Image 1</p>
+                <div class="text-part p-3">
+                    <h3 class="font-bold text-lg md:text-xl">CampusConnect</h3> <br>
+                    <p class="text-sm md:text-base">A university social media platform built with Spring Boot.</p><br>
+                    <p class="text-sm md:text-base">Tech: Java, Spring Boot, HTML, CSS, JavaScript</p><br>
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                        class="text-primary hover:text-blue-500">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
                 </div>
             </div>
+            
             <div class="image-box">
                 <div class="image-part">
-                    <img src="p1.png" alt="Image 2">
+                    <img src="./images/pc.png" alt="Project 2">
                 </div>
-                <div class="text-part">
-                    <p>Image 2</p>
+                <div class="text-part p-3">
+                    <h3 class="font-bold text-lg md:text-xl">Parental Control</h3> <br>
+                    <p class="text-sm md:text-base">Designed UI/UX for a parental control application.</p><br>
+                    <p class="text-sm md:text-base">Tech: Figma, HTML, CSS</p><br>
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                        class="text-primary hover:text-blue-500">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
                 </div>
             </div>
+            
             <div class="image-box">
                 <div class="image-part">
-                    <img src="p1.png" alt="Image 3">
+                    <img src="./images/p1.png" alt="Project 3">
                 </div>
-                <div class="text-part">
-                    <p>Image 3</p>
+                <div class="text-part p-3">
+                    <h3 class="font-bold text-lg md:text-xl">2D Maze Game</h3> <br>
+                    <p class="text-sm md:text-base">A simple 2D maze game developed using C++.</p><br>
+                    <p class="text-sm md:text-base">Tech: C++</p><br>
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                        class="text-primary hover:text-blue-500">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
                 </div>
             </div>
+            
             <div class="image-box">
                 <div class="image-part">
-                    <img src="p1.png" alt="Image 4">
+                    <img src="./images/p1.png" alt="Project 4">
                 </div>
-                <div class="text-part">
-                    <p>Image 4</p>
+                <div class="text-part p-3">
+                    <h3 class="font-bold text-lg md:text-xl">Tic Tac Toe</h3> <br>
+                    <p class="text-sm md:text-base">A classic Tic Tac Toe game built with Java.</p><br>
+                    <p class="text-sm md:text-base">Tech: Java</p><br>
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                        class="text-primary hover:text-blue-500">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
                 </div>
             </div>
+            
             <div class="image-box">
                 <div class="image-part">
-                    <img src="p1.png" alt="Image 5">
+                    <img src="./images/wa.png" alt="Project 5">
                 </div>
-                <div class="text-part">
-                    <p>Image 5</p>
+                <div class="text-part p-3">
+                    <h3 class="font-bold text-lg md:text-xl">Weather App</h3> <br>
+                    <p class="text-sm md:text-base">A web application to display weather information.</p><br>
+                    <p class="text-sm md:text-base">Tech: HTML, CSS, JavaScript, API</p><br>
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                        class="text-primary hover:text-blue-500">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
                 </div>
             </div>
+            
             <div class="image-box">
                 <div class="image-part">
-                    <img src="p1.png" alt="Image 6">
+                    <img src="./images/p1.png" alt="Project 6">
                 </div>
-                <div class="text-part">
-                    <p>Image 6</p>
+                <div class="text-part p-3">
+                    <h3 class="font-bold text-lg md:text-xl">Task Manager</h3> <br>
+                    <p class="text-sm md:text-base">A task management application built with React.</p><br>
+                    <p class="text-sm md:text-base">Tech: React, Node.js, MongoDB</p><br>
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                        class="text-primary hover:text-blue-500">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
                 </div>
             </div>
+            
             <div class="image-box">
                 <div class="image-part">
-                    <img src="p1.png" alt="Image 7">
+                    <img src="./images/p1.png" alt="Project 7">
                 </div>
-                <div class="text-part">
-                    <p>Image 7</p>
+                <div class="text-part p-3">
+                    <h3 class="font-bold text-lg md:text-xl">E-commerce Site</h3> <br>
+                    <p class="text-sm md:text-base">An online shopping platform built with Django.</p><br>
+                    <p class="text-sm md:text-base">Tech: Flutter</p><br>
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                        class="text-primary hover:text-blue-500">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
                 </div>
             </div>
+            
             <div class="image-box">
                 <div class="image-part">
-                    <img src="p1.png" alt="Image 8">
+                    <img src="./images/p1.png" alt="Project 8">
                 </div>
-                <div class="text-part">
-                    <p>Image 8</p>
+                <div class="text-part p-3">
+                    <h3 class="font-bold text-lg md:text-xl">Chat Application</h3> <br>
+                    <p class="text-sm md:text-base">A real-time chat application using Socket.IO.</p><br>
+                    <p class="text-sm md:text-base">Tech: Node.js, Socket.IO, HTML, CSS</p><br>
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                        class="text-primary hover:text-blue-500">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
                 </div>
             </div>
-        </div>
+            
     </main>
 
     <footer class="p-3">
@@ -529,40 +525,6 @@
             &copy; 2024 Muhammad Waqas Shahid Khan
         </div>
     </footer>
-
-
-    <script>
-        // JavaScript for Mobile Menu Toggle
-        const menuButton = document.getElementById('menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        menuButton.addEventListener('click', () => {
-            if (mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.remove('hidden', 'hide');
-                mobileMenu.classList.add('show');
-            } else {
-                mobileMenu.classList.replace('show', 'hide');
-                mobileMenu.addEventListener('animationend', () => {
-                    if (mobileMenu.classList.contains('hide')) {
-                        mobileMenu.classList.add('hidden');
-                        mobileMenu.classList.remove('hide'); // Ensure the menu is hidden after animation
-                    }
-                }, { once: true });
-            }
-        });
-
-        // Close the mobile menu when clicking outside
-        document.addEventListener('click', (event) => {
-            if (!menuButton.contains(event.target) && !mobileMenu.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.replace('show', 'hide');
-                mobileMenu.addEventListener('animationend', () => {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenu.classList.remove('hide');
-                }, { once: true });
-            }
-        });
-
-    </script>
 </body>
 
 </html>
