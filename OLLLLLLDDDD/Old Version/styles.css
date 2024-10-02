@@ -1,0 +1,343 @@
+/* Reset styles for html and body */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #3f1f1f;
+}
+
+/* Styles for the container elements */
+#background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Keeps the background behind all other content */
+    overflow: hidden; /* Ensures the background doesn't scroll */
+}
+
+#scene-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0; /* Ensure it is behind the navbar and other content */
+}
+
+#text-overlay {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #ffffff;
+    font-size: 24px;
+    z-index: 1; /* Ensure it appears over the 3D scene */
+}
+/* Styles for the navbar */
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(30, 30, 30, 0.8);
+    padding: 10px 20px; /* Adjusted padding */
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distributes space between items */
+    overflow: hidden;
+    box-sizing: border-box; /* Includes padding in the width */
+}
+
+#logo {
+    height: 40px; /* Adjust the height of the logo */
+    margin-right: auto; /* Pushes the logo to the left */
+}
+
+#navbar-name {
+    color: #ffffff;
+    font-size: 20px; /* Adjust as needed */
+    margin-right: auto; /* Pushes the name to the left */
+}
+
+#navbar ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+#navbar ul li {
+    margin: 0;
+}
+
+#navbar ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 17px;
+    transition: color 0.3s ease;
+}
+
+#navbar ul li a:hover {
+    color: #1e90ff;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+    #navbar {
+        padding: 10px 20px; /* Adjust padding for smaller screens */
+    }
+
+    #navbar ul li a {
+        font-size: 16px; /* Adjust font size for smaller screens */
+    }
+
+    #navbar ul li {
+        margin: 0 10px; /* Adjust spacing between items for smaller screens */
+    }
+}
+
+.section {
+    padding: 100px 20px;
+    min-height: 100vh; /* Ensures each section takes up the full viewport height */
+    color: #1cd644;
+    text-align: center;
+    z-index: 10;
+    position: relative;
+}
+
+#about {
+    padding: 100px 20px; /* Adjust this padding if necessary */
+    margin: 0 auto; /* Center align the section */
+    text-align: center; /* Center text */
+}
+
+
+#projects {
+    position: relative;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.projects-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr; /* Each project box will take the full width */
+    grid-auto-rows: minmax(100px, auto); /* Automatically adjust row height */
+    gap: 150px; /* Adds spacing between rows */
+    width: 50%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.project-box {
+    position: relative;
+    width: 420px; /* Make the box width 45% to leave space for the central line */
+    padding: 20px;
+    background: linear-gradient(135deg, #201b1b, #2d1f1f); /* Linear gradient from red to a lighter red */
+    opacity: 0.75;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    z-index: 1; /* Ensure the boxes appear above the central line */
+    margin: 0 auto;
+    /* Don't Remove
+    box-sizing:border-box;*/
+}
+
+.project-box.left {
+    margin-left: -340px;
+}
+
+.project-box.right {
+    margin-left: 620px; /* Align the right box to the right */
+}
+
+.central-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 5px;
+    height: 100%; /* Adjust the height to cover the full area */
+    background-color: #1cd644;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+.project-box .connecting-line {
+    position: absolute;
+    top: 50%;
+    width: 240px;
+    height: 5px;
+    background-color: #1cd644;
+    z-index: 0;
+}
+
+.project-box.left .connecting-line {
+    left: 100%;
+    transform: translateX(10px);
+}
+
+.project-box.right .connecting-line {
+    right: 100%;
+    transform: translateX(-10px);
+}
+
+.connecting-line {
+    position: absolute;
+    top: 50%;
+    width: 500px; /* Increase this value to make the line longer */
+    height: 5px;
+    background-color: #1cd644;
+    z-index: 0;
+}
+
+
+.project-card {
+    width: 380px;
+    margin: 20px;
+    border: none; /* 1px solid #ddd*/
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(4, 230, 11, 0.812);
+}
+
+/* Styles for the project-card links */
+.project-card a {
+    text-decoration: none; /* Remove the underline */
+    color: #ffffff; /* Change the text color to white */
+    transition: color 0.3s ease, transform 0.3s ease; /* Add a transition effect */
+}
+
+.project-card a:hover {
+    color: #1e90ff; /* Change the text color on hover */
+    transform: scale(1.05); /* Slightly scale up the link on hover */
+}
+
+/* Optional: Enhance the project title */
+.project-card h3 {
+    font-size: 24px; /* Increase the font size */
+    margin-bottom: 10px; /* Add some space below the title */
+}
+
+/* Optional: Enhance the project description */
+.project-card p {
+    font-size: 16px; /* Adjust the font size */
+    color: #cccccc; /* Slightly lighter color for the description */
+}
+
+
+.project-thumbnail {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.project-info {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Loader container styles */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000; /* Ensure it appears over all other content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Spinner styles */
+.spinner {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+/* Spinner animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Media Queriessss for Responsive Design */
+@media screen and (max-width: 768px) {
+    .projects-container {
+        width: 100%;
+        grid-template-columns: 1fr;
+        gap: 30px; /* Less spacing between rows on mobile */
+        padding: 0;
+    }
+
+    .project-box {
+        width: 90%;
+        max-width: none;
+        margin: 0 auto; /* Center the project boxes */
+    }
+
+    .project-box.left {
+        margin-left: 0; /* Reset margin for mobile view */
+    }
+
+    .project-box.right {
+        margin-left: 0; /* Reset margin for mobile view */
+    }
+
+    .project-box .connecting-line {
+        display: none; /* Hide connecting lines on mobile */
+    }
+
+    .central-line {
+        display: none; /* Hide central line on mobile */
+    }
+}
+
+
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#contact-form input, #contact-form textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #333;
+    border: none;
+    color: white;
+}
+
+#contact-form button {
+    padding: 10px;
+    background-color: #1e90ff;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+#contact-form button:hover {
+    background-color: #4682b4;
+}

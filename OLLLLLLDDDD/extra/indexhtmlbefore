@@ -1,0 +1,125 @@
+    before adding background img
+    
+    <!DOCTYPE html>
+    <html lang="en" class="dark">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Muhammad Waqas - Software Engineer</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            @keyframes slideDown {
+                from {
+                    transform: translateY(0%);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateY(100%);
+                    opacity: 1;
+                }
+            }
+
+            @keyframes slideUp {
+                from {
+                    transform: translateY(-100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0%);
+                    opacity: 1;
+                }
+            }
+
+            @keyframes gradientBG {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+
+            .blinder {
+                background: #1B1B1B;
+                width: 100%;
+                height: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 9999;
+                animation: slideDown 4.5s ease-out forwards;
+                animation-delay: 0.5s;
+            }
+
+            body {
+                background: linear-gradient(270deg, #000000, #131515);
+                background-size: 400% 400%;
+                animation: gradientBG 15s ease infinite;
+                color: white;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+            }
+
+            header, main, footer {
+                opacity: 0;
+                animation: slideUp 4.5s ease-out forwards;
+                animation-delay: 0.5s;
+            }
+        </style>
+        
+        <!--checkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk-->
+        <script>
+            tailwind.config = {
+                darkMode: 'class',
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: '#3B82F6',
+                        }
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body class="bg-gray-900 text-white flex flex-col overflow-hidden">
+        <div class="blinder"></div>
+        <header class="p-3"> <!--class="bg-gray-800 p-4"-->
+            <nav class="container mx-auto flex justify-between items-center">
+                <h1 class="text-2xl font-bold">Muhammad Waqas Shahid Khan</h1>
+                <ul class="flex space-x-4">
+                    <li><a href="index.html" class="hover:text-primary">Home</a></li>
+                    <li><a href="gallery.html" class="hover:text-primary">Gallery</a></li>
+                    <li><a href="projects.html" class="hover:text-primary">Projects</a></li>
+                    <li><a href="career_goals.html" class="hover:text-primary">Career Goals</a></li>
+                    <li><a href="skills_interests.html" class="hover:text-primary">Skills & Interests</a></li>
+                    <li><a href="contact.html" class="hover:text-primary">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="container mx-auto flex-grow flex items-center justify-center px-4 ">
+            <div class="text-center">
+                <img src="https://via.placeholder.com/150" alt="Muhammad Waqas" class="rounded-full mx-auto mb-4">
+                <h1 class="text-4xl font-bold mb-2">Muhammad Waqas Shahid Khan</h1>
+                <h2 class="text-2xl text-gray-400 mb-4">Software Engineer</h2>
+                <p class="max-w-lg mx-auto mb-8">
+                    Passionate software engineer with expertise in web development and problem-solving. 
+                    Committed to creating efficient and innovative solutions.
+                </p>
+            </div>
+        </main>
+
+        
+
+        <footer class="p-3"> <!--bg-gray-800 p-4 mt-8-->
+            <div class="container mx-auto text-center text-gray-400">
+                &copy; 2023 Muhammad Waqas. All rights reserved.
+            </div>
+        </footer>
+    </body>
+    </html>
