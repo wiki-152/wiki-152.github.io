@@ -9,8 +9,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&display=swap"
-        rel="stylesheet">
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:ital,wght@1,400;1,700&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
@@ -49,6 +49,18 @@
                 transform: translateY(0%);
                 opacity: 1;
             }
+        }
+
+        .font-italic1 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            /* Ensure the italic style is applied */
+            -webkit-font-smoothing: antialiased;
+            /* Enhance font rendering on Safari */
+            text-rendering: optimizeLegibility;
+            /* Standard property for better text rendering */
+            -webkit-text-rendering: optimizeLegibility;
+            /* For better text rendering in Webkit-based browsers */
         }
 
         .blinder {
@@ -182,6 +194,7 @@
             justify-content: center;
             text-align: center;
             font-size: 1.2rem;
+            font: font-italic1;
             background-color: rgba(255, 255, 255, 0.1);
         }
 

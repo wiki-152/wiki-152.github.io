@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MWSK-Portfolio</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&display=swap"rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:ital,wght@1,400;1,700&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
 
-    
+
     <style>
         @keyframes slideDown {
             from {
                 transform: translateY(0%);
                 opacity: 1;
             }
+
             to {
                 transform: translateY(100%);
                 opacity: 1;
@@ -31,10 +35,23 @@
                 transform: translateY(-100%);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0%);
                 opacity: 1;
             }
+        }
+
+        .font-italic1 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            /* Ensure the italic style is applied */
+            -webkit-font-smoothing: antialiased;
+            /* Enhance font rendering on Safari */
+            text-rendering: optimizeLegibility;
+            /* Standard property for better text rendering */
+            -webkit-text-rendering: optimizeLegibility;
+            /* For better text rendering in Webkit-based browsers */
         }
 
         .blinder {
@@ -104,15 +121,16 @@
             object-fit: cover;
             flex-shrink: 0;
         }
+
         .hover-glow:hover {
-        text-shadow: 0 0 20px rgba(59,130,246,0.7); 
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
         }
 
-        input[type="checkbox"]:checked ~ ul {
+        input[type="checkbox"]:checked~ul {
             display: block;
         }
     </style>
-    
+
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -135,9 +153,9 @@
 </head>
 
 <body class="font-unique bg-gray-900 text-white flex flex-col overflow-hidden">
-    
+
     <div class="blinder"></div>
-    
+
     <header class="p-3">
         <nav class="container mx-auto flex justify-between items-center relative z-50">
 
@@ -187,47 +205,56 @@
         </nav>
     </header>
 
-    
+
     <!--<main class="font-italic1 container mx-auto flex-grow flex flex-col items-center justify-center px-4 relative"> OLD-->
     <main class="font-italic1 flex-grow flex flex-col items-center justify-center px-4 relative">
-        
+
         <section class="w-full p-6 mb-6 bg-black bg-opacity-50 rounded-lg backdrop-blur-md">
             <h2 class="text-2xl font-bold mb-4 text-center">Skills</h2>
             <div class="space-y-2">
                 <div class="bg-gray-700 rounded-full overflow-hidden">
-                    <div class="bg-[#666666] text-xs font-medium text-white text-center p-0.5 leading-none" style="width: 90%;">Python - 90%</div>
+                    <div class="bg-[#666666] text-xs font-medium text-white text-center p-0.5 leading-none"
+                        style="width: 90%;">Python - 90%</div>
                 </div>
                 <div class="bg-gray-700 rounded-full overflow-hidden">
-                    <div class="bg-[#666666] text-xs font-medium text-white text-center p-0.5 leading-none" style="width: 75%;">JavaScript - 75%</div>
+                    <div class="bg-[#666666] text-xs font-medium text-white text-center p-0.5 leading-none"
+                        style="width: 75%;">JavaScript - 75%</div>
                 </div>
                 <div class="bg-gray-700 rounded-full overflow-hidden">
-                    <div class="bg-[#666666] text-xs font-medium text-white text-center p-0.5 leading-none" style="width: 90%;">C++ - 90%</div>
+                    <div class="bg-[#666666] text-xs font-medium text-white text-center p-0.5 leading-none"
+                        style="width: 90%;">C++ - 90%</div>
                 </div>
                 <div class="bg-gray-700 rounded-full overflow-hidden">
-                    <div class="bg-[#666666] text-xs font-medium text-white text-center p-0.5 leading-none" style="width: 65%;">C# - 65%</div>
+                    <div class="bg-[#666666] text-xs font-medium text-white text-center p-0.5 leading-none"
+                        style="width: 65%;">C# - 65%</div>
                 </div>
                 <div class="bg-gray-700 rounded-full overflow-hidden">
-                    <div class="bg-[#666666] text-xs font-medium text-white text-center p-0.5 leading-none" style="width: 80%;">Spring Boot - 80%</div>
+                    <div class="bg-[#666666] text-xs font-medium text-white text-center p-0.5 leading-none"
+                        style="width: 80%;">Spring Boot - 80%</div>
                 </div>
                 <div class="bg-gray-700 rounded-full overflow-hidden">
-                    <div class="bg-[#666666] text-xs font-medium text-white text-center p-0.5 leading-none" style="width: 75%;">.Net - 75%</div>
+                    <div class="bg-[#666666] text-xs font-medium text-white text-center p-0.5 leading-none"
+                        style="width: 75%;">.Net - 75%</div>
                 </div>
-                
+
             </div>
         </section>
-        
-    
+
+
         <section class="w-full p-6 bg-black bg-opacity-50 rounded-lg backdrop-blur-md">
             <h2 class="text-2xl font-bold mb-4 text-center">Interests</h2>
             <p class="text-center mb-4">
-                As a software engineer, I have a keen interest in football and am passionate about aviation. I enjoy exploring the latest trends in technology and how they intersect with daily life. 
-                My love for aviation extends beyond just the mechanics; I appreciate the design and innovation that drives the industry forward. 
-                Additionally, I participate in local football leagues, which helps me stay active and connect with my community.
+                As a software engineer, I have a keen interest in football and am passionate about aviation. I enjoy
+                exploring the latest trends in technology and how they intersect with daily life.
+                My love for aviation extends beyond just the mechanics; I appreciate the design and innovation that
+                drives the industry forward.
+                Additionally, I participate in local football leagues, which helps me stay active and connect with my
+                community.
             </p>
         </section>
     </main>
-    
-    
+
+
 
 
     <footer class="p-3">
@@ -236,4 +263,5 @@
         </div>
     </footer>
 </body>
+
 </html>

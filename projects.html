@@ -11,8 +11,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&display=swap"
-        rel="stylesheet">
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:ital,wght@1,400;1,700&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
@@ -50,6 +50,18 @@
                 transform: translateY(0%);
                 opacity: 1;
             }
+        }
+
+        .font-italic1 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            /* Ensure the italic style is applied */
+            -webkit-font-smoothing: antialiased;
+            /* Enhance font rendering on Safari */
+            text-rendering: optimizeLegibility;
+            /* Standard property for better text rendering */
+            -webkit-text-rendering: optimizeLegibility;
+            /* For better text rendering in Webkit-based browsers */
         }
 
         .blinder {
@@ -183,6 +195,7 @@
             justify-content: center;
             text-align: center;
             font-size: 1.2rem;
+            font: font-italic1;
             background-color: rgba(255, 255, 255, 0.1);
         }
 
@@ -274,250 +287,250 @@
     <main class="font-italic1 flex-grow flex items-center justify-center px-4 relative">
         <div class="image-slider">
             <div class="image-box">
-                <div class="image-part">
+                <div class="image-part ">
                     <img src="./images/cc.png" alt="Project 1">
                 </div>
                 <div class="text-part p-3">
-                    <h3 class="font-bold text-lg md:text-xl">CampusConnect</h3> <br>
+                    <h3 class="font-italic1 font-bold text-lg md:text-xl">CampusConnect</h3> <br>
                     <p class="text-sm md:text-base">A university social media platform built with Spring Boot.</p><br>
                     <p class="text-sm md:text-base">Tech: Java, Spring Boot, HTML, CSS, JavaScript</p><br>
-                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener"
                         class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
             </div>
-            
+
             <div class="image-box">
-                <div class="image-part">
+                <div class="image-part ">
                     <img src="./images/pc.png" alt="Project 2">
                 </div>
                 <div class="text-part p-3">
-                    <h3 class="font-bold text-lg md:text-xl">Parental Control</h3> <br>
+                    <h3 class="font-italic1 font-bold text-lg md:text-xl">Parental Control</h3> <br>
                     <p class="text-sm md:text-base">Designed UI/UX for a parental control application.</p><br>
                     <p class="text-sm md:text-base">Tech: Figma, HTML, CSS</p><br>
-                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener"
                         class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
             </div>
-            
+
             <div class="image-box">
-                <div class="image-part">
+                <div class="image-part ">
                     <img src="./images/p1.png" alt="Project 3">
                 </div>
                 <div class="text-part p-3">
-                    <h3 class="font-bold text-lg md:text-xl">2D Maze Game</h3> <br>
+                    <h3 class="font-italic1 font-bold text-lg md:text-xl">2D Maze Game</h3> <br>
                     <p class="text-sm md:text-base">A simple 2D maze game developed using C++.</p><br>
                     <p class="text-sm md:text-base">Tech: C++</p><br>
-                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener"
                         class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
             </div>
-            
+
             <div class="image-box">
-                <div class="image-part">
+                <div class="image-part ">
                     <img src="./images/p1.png" alt="Project 4">
                 </div>
                 <div class="text-part p-3">
-                    <h3 class="font-bold text-lg md:text-xl">Tic Tac Toe</h3> <br>
+                    <h3 class="font-italic1 font-bold text-lg md:text-xl">Tic Tac Toe</h3> <br>
                     <p class="text-sm md:text-base">A classic Tic Tac Toe game built with Java.</p><br>
                     <p class="text-sm md:text-base">Tech: Java</p><br>
-                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener"
                         class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
             </div>
-            
+
             <div class="image-box">
-                <div class="image-part">
+                <div class="image-part ">
                     <img src="./images/wa.png" alt="Project 5">
                 </div>
                 <div class="text-part p-3">
-                    <h3 class="font-bold text-lg md:text-xl">Weather App</h3> <br>
+                    <h3 class="font-italic1 font-bold text-lg md:text-xl">Weather App</h3> <br>
                     <p class="text-sm md:text-base">A web application to display weather information.</p><br>
                     <p class="text-sm md:text-base">Tech: HTML, CSS, JavaScript, API</p><br>
-                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener"
                         class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
             </div>
-            
+
             <div class="image-box">
-                <div class="image-part">
+                <div class="image-part ">
                     <img src="./images/p1.png" alt="Project 6">
                 </div>
                 <div class="text-part p-3">
-                    <h3 class="font-bold text-lg md:text-xl">Task Manager</h3> <br>
+                    <h3 class="font-italic1 font-bold text-lg md:text-xl">Task Manager</h3> <br>
                     <p class="text-sm md:text-base">A task management application built with React.</p><br>
                     <p class="text-sm md:text-base">Tech: React, Node.js, MongoDB</p><br>
-                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener"
                         class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
             </div>
-            
+
             <div class="image-box">
-                <div class="image-part">
+                <div class="image-part ">
                     <img src="./images/p1.png" alt="Project 7">
                 </div>
                 <div class="text-part p-3">
-                    <h3 class="font-bold text-lg md:text-xl">E-commerce Site</h3> <br>
+                    <h3 class="font-italic1 font-bold text-lg md:text-xl">E-commerce Site</h3> <br>
                     <p class="text-sm md:text-base">An online shopping platform built with Django.</p><br>
                     <p class="text-sm md:text-base">Tech: Flutter</p><br>
-                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener"
                         class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
             </div>
-            
+
             <div class="image-box">
-                <div class="image-part">
+                <div class="image-part ">
                     <img src="./images/p1.png" alt="Project 8">
                 </div>
                 <div class="text-part p-3">
-                    <h3 class="font-bold text-lg md:text-xl">Chat Application</h3> <br>
+                    <h3 class="font-italic1 font-bold text-lg md:text-xl">Chat Application</h3> <br>
                     <p class="text-sm md:text-base">A real-time chat application using Socket.IO.</p><br>
                     <p class="text-sm md:text-base">Tech: Node.js, Socket.IO, HTML, CSS</p><br>
-                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener"
                         class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
             </div>
-            
-            
-            
+
+
+
 
 
             <!-- Duplicate set of images for seamless looping -->
             <div class="image-box">
-                <div class="image-part">
+                <div class="image-part ">
                     <img src="./images/cc.png" alt="Project 1">
                 </div>
                 <div class="text-part p-3">
-                    <h3 class="font-bold text-lg md:text-xl">CampusConnect</h3> <br>
+                    <h3 class="font-italic1 font-bold text-lg md:text-xl">CampusConnect</h3> <br>
                     <p class="text-sm md:text-base">A university social media platform built with Spring Boot.</p><br>
                     <p class="text-sm md:text-base">Tech: Java, Spring Boot, HTML, CSS, JavaScript</p><br>
-                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener"
                         class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
             </div>
-            
+
             <div class="image-box">
-                <div class="image-part">
+                <div class="image-part ">
                     <img src="./images/pc.png" alt="Project 2">
                 </div>
                 <div class="text-part p-3">
-                    <h3 class="font-bold text-lg md:text-xl">Parental Control</h3> <br>
+                    <h3 class="font-italic1 font-bold text-lg md:text-xl">Parental Control</h3> <br>
                     <p class="text-sm md:text-base">Designed UI/UX for a parental control application.</p><br>
                     <p class="text-sm md:text-base">Tech: Figma, HTML, CSS</p><br>
-                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener"
                         class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
             </div>
-            
+
             <div class="image-box">
-                <div class="image-part">
+                <div class="image-part ">
                     <img src="./images/p1.png" alt="Project 3">
                 </div>
                 <div class="text-part p-3">
-                    <h3 class="font-bold text-lg md:text-xl">2D Maze Game</h3> <br>
+                    <h3 class="font-italic1 font-bold text-lg md:text-xl">2D Maze Game</h3> <br>
                     <p class="text-sm md:text-base">A simple 2D maze game developed using C++.</p><br>
                     <p class="text-sm md:text-base">Tech: C++</p><br>
-                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener"
                         class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
             </div>
-            
+
             <div class="image-box">
-                <div class="image-part">
+                <div class="image-part ">
                     <img src="./images/p1.png" alt="Project 4">
                 </div>
                 <div class="text-part p-3">
-                    <h3 class="font-bold text-lg md:text-xl">Tic Tac Toe</h3> <br>
+                    <h3 class="font-italic1 font-bold text-lg md:text-xl">Tic Tac Toe</h3> <br>
                     <p class="text-sm md:text-base">A classic Tic Tac Toe game built with Java.</p><br>
                     <p class="text-sm md:text-base">Tech: Java</p><br>
-                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener"
                         class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
             </div>
-            
+
             <div class="image-box">
-                <div class="image-part">
+                <div class="image-part ">
                     <img src="./images/wa.png" alt="Project 5">
                 </div>
                 <div class="text-part p-3">
-                    <h3 class="font-bold text-lg md:text-xl">Weather App</h3> <br>
+                    <h3 class="font-italic1 font-bold text-lg md:text-xl">Weather App</h3> <br>
                     <p class="text-sm md:text-base">A web application to display weather information.</p><br>
                     <p class="text-sm md:text-base">Tech: HTML, CSS, JavaScript, API</p><br>
-                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener"
                         class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
             </div>
-            
+
             <div class="image-box">
-                <div class="image-part">
+                <div class="image-part ">
                     <img src="./images/p1.png" alt="Project 6">
                 </div>
                 <div class="text-part p-3">
-                    <h3 class="font-bold text-lg md:text-xl">Task Manager</h3> <br>
+                    <h3 class="font-italic1 font-bold text-lg md:text-xl">Task Manager</h3> <br>
                     <p class="text-sm md:text-base">A task management application built with React.</p><br>
                     <p class="text-sm md:text-base">Tech: React, Node.js, MongoDB</p><br>
-                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener"
                         class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
             </div>
-            
+
             <div class="image-box">
-                <div class="image-part">
+                <div class="image-part ">
                     <img src="./images/p1.png" alt="Project 7">
                 </div>
                 <div class="text-part p-3">
-                    <h3 class="font-bold text-lg md:text-xl">E-commerce Site</h3> <br>
+                    <h3 class="font-italic1 font-bold text-lg md:text-xl">E-commerce Site</h3> <br>
                     <p class="text-sm md:text-base">An online shopping platform built with Django.</p><br>
                     <p class="text-sm md:text-base">Tech: Flutter</p><br>
-                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener"
                         class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
             </div>
-            
+
             <div class="image-box">
-                <div class="image-part">
+                <div class="image-part ">
                     <img src="./images/p1.png" alt="Project 8">
                 </div>
                 <div class="text-part p-3">
-                    <h3 class="font-bold text-lg md:text-xl">Chat Application</h3> <br>
+                    <h3 class="font-italic1 font-bold text-lg md:text-xl">Chat Application</h3> <br>
                     <p class="text-sm md:text-base">A real-time chat application using Socket.IO.</p><br>
                     <p class="text-sm md:text-base">Tech: Node.js, Socket.IO, HTML, CSS</p><br>
-                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener" 
+                    <a href="https://github.com/wiki-152" target="_blank" rel="noopener"
                         class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
             </div>
-            
+
     </main>
 
     <footer class="p-3">
