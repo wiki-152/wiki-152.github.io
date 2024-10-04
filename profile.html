@@ -51,9 +51,9 @@
             /* Ensure the italic style is applied */
             -webkit-font-smoothing: antialiased;
             /* Enhance font rendering on Safari */
-            text-rendering: optimizeLegibility;
+            -webkit-text-rendering: optimizeLegibility; /*text-rendering old*/
             /* Standard property for better text rendering */
-            -webkit-text-rendering: optimizeLegibility;
+            text-rendering: optimizeLegibility;
             /* For better text rendering in Webkit-based browsers */
         }
 
@@ -76,7 +76,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            overflow: auto;
         }
 
         main {
@@ -86,13 +86,14 @@
             background-repeat: no-repeat;
             display: flex;
             justify-content: center;
-            /* Center the content */
             padding: 20px;
             width: 100%;
+            flex-grow: 1; /* Ensure it expands to fill available space */
+            overflow-y: auto; /* In case the content itself overflows */
         }
 
         footer {
-            position: absolute;
+            position: relative;
             bottom: 0;
             width: 100%;
             padding: 1rem;
@@ -104,7 +105,7 @@
         /* Add mobile-specific styles */
         @media only screen and (max-width: 768px) {
             footer {
-                position: fixed;
+                position: relative;
                 bottom: 0;
                 width: 100%;
                 padding: 1rem;
@@ -177,7 +178,7 @@
     </script>
 </head>
 
-<body class="font-unique bg-gray-900 text-white flex flex-col overflow-hidden">
+<body class="font-unique bg-gray-900 text-white flex flex-col overflow-auto">
 
     <div class="blinder"></div>
 
@@ -191,7 +192,7 @@
                 </h1>
 
                 <!-- Mobile menu toggle -->
-                <input type="checkbox" id="menu-toggle" class="hidden">
+                <input type="checkbox" id="menu-toggle" class="hidden" title="Toggle menu">
                 <label for="menu-toggle" class="block md:hidden cursor-pointer">
                     <div class="space-y-2">
                         <span class="block w-8 h-1 bg-white"></span>
