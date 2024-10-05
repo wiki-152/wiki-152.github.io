@@ -53,13 +53,9 @@
         .font-italic1 {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            /* Ensure the italic style is applied */
             -webkit-font-smoothing: antialiased;
-            /* Enhance font rendering on Safari */
-            -webkit-text-rendering: optimizeLegibility; /*text-rendering old*/
-            /* Standard property for better text rendering */
+            -webkit-text-rendering: optimizeLegibility;
             text-rendering: optimizeLegibility;
-            /* For better text rendering in Webkit-based browsers */
         }
 
         .blinder {
@@ -93,8 +89,8 @@
             justify-content: center;
             padding: 20px;
             width: 100%;
-            flex-grow: 1; /* Ensure it expands to fill available space */
-            overflow-y: auto; /* In case the content itself overflows */
+            flex-grow: 1;
+            overflow-y: auto;
         }
 
         footer {
@@ -107,7 +103,6 @@
             color: #fff;
         }
 
-        /* Add mobile-specific styles */
         @media only screen and (max-width: 768px) {
             footer {
                 position: relative;
@@ -122,9 +117,7 @@
 
         .profile {
             width: 150px;
-            /* Adjusted width for smaller screens */
             height: 150px;
-            /* Adjusted height for smaller screens */
             border-radius: 20px;
             object-fit: cover;
             flex-shrink: 0;
@@ -140,22 +133,14 @@
             border-radius: 25px;
             padding: 20px;
             width: 100%;
-            /* Make it full width on smaller screens */
         }
 
-        /* CSS for right-aligned icons */
         .icon-container {
             display: flex;
             justify-content: center;
-            /* Center icons */
-            /* Aligns icons to the right */
             align-items: center;
-            /* Keeps icons vertically centered */
             font-size: 24px;
-            /* Icon size */
             gap: 10px;
-            /* Reduced spacing between icons */
-            /* Spacing between icons */
         }
 
         input[type="checkbox"]:checked~ul {
@@ -237,46 +222,57 @@
     </header>
 
     <main class="font-italic1 flex-grow flex items-center justify-center px-4 relative">
-        <div class="bg-blur rounded-lg p-4 shadow-lg flex flex-col md:flex-row items-center w-full max-w-4xl">
+
+        <div class="bg-blur rounded-lg p-4 shadow-lg flex flex-col md:flex-row items-center w-full max-w-4xl h-full">
 
             <!-- Profile Picture -->
+             <div class="pl-4 pr-4 md:-mt-12">
             <img src="./images/profilepic1.png" alt="Muhammad Waqas Shahid Khan"
-                class="profile rounded-md mb-4 md:mb-0 md:mr-4 w-32 h-32 md:w-48 md:h-48 object-cover">
-
-            <div class="flex flex-col justify-center text-center md:text-left space-y-2 max-w-xl">
-                <h1 class="text-3xl md:text-4xl font-bold text-gray-200">Muhammad Waqas Shahid Khan</h1>
-                <h2 class="text-2xl md:text-2xl text-gray-400">Software Engineer</h2>
-                <p class="text-md md:text-xl text-gray-400">
-                    A passionate Software engineer with expertise in Web Development.
-                    Committed to creating efficient and innovative solutions.
-                    Graduated from Cadet College Hasanabdal and pursuing Bachelors in Software Engineering.
-                </p>
+                class="profile rounded-md mb-4 md:mb-0 md:mr-4 w-40 h-40 md:w-60 md:h-60 object-cover">
             </div>
 
-            <!-- Social media icons aligned to the right -->
-            <div class="icon-container flex space-x-4 mt-4 md:mt-0 md:ml-4">
-                <a href="#" class="text-gray-600 hover:text-blue-400 transition-colors duration-800 ease-in-out" title="Twitter">
-                    <i
-                        class="fab fa-twitter transform hover:scale-125 transition-transform duration-800 ease-in-out"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/mwaqas152/" title="linkedIn"
-                    class="text-gray-600 hover:text-blue-400 transition-colors duration-800 ease-in-out">
-                    <i
-                        class="fab fa-linkedin-in transform hover:scale-125 transition-transform duration-800 ease-in-out"></i>
-                </a>
-                <a href="https://github.com/wiki-152" title="Github"
-                    class="text-gray-600 hover:text-red-500 transition-colors duration-800 ease-in-out">
-                    <i
-                        class="fab fa-github transform hover:scale-125 transition-transform duration-800 ease-in-out"></i>
-                </a>
-                <a href="https://leetcode.com/wiki_152/" title="Leetcode"
-                    class="text-gray-600 hover:text-yellow-500 transition-colors duration-800 ease-in-out">
-                    <i class="fas fa-code transform hover:scale-125 transition-transform duration-800 ease-in-out"></i>
-                </a>
+            <!-- Inner content -->
+            <div class="flex flex-col justify-between text-center md:text-center md:mt-20 md:mr-4 max-w-2xl h-full flex-1">
+
+                <!-- Text content -->
+                <div class="flex-grow md:-mt-12">
+                    <h1 class="text-3xl pb-4 md:text-4xl font-bold text-gray-200">Muhammad Waqas Shahid Khan</h1>
+                    <h2 class="text-2xl pb-4 md:text-2xl text-gray-400">Software Engineer</h2>
+                    <p class="text-md pb-4 md:text-xl text-gray-400">
+                        A passionate Software engineer with expertise in Web Development.
+                        Committed to creating efficient and innovative solutions.
+                        Graduated from Cadet College Hasanabdal and pursuing Bachelors in Software Engineering.
+                    </p>
+                </div>
+
+                <!-- Social media icons -->
+                <div class="icon-container flex space-x-4 mt-4 md:mt-0 justify-center md:justify-end">
+                    <a href="#" class="text-gray-600 hover:text-blue-400 transition-colors duration-800 ease-in-out"
+                        title="Twitter">
+                        <i
+                            class="fab fa-twitter transform hover:scale-125 transition-transform duration-800 ease-in-out"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mwaqas152/" title="LinkedIn"
+                        class="text-gray-600 hover:text-blue-400 transition-colors duration-800 ease-in-out">
+                        <i
+                            class="fab fa-linkedin-in transform hover:scale-125 transition-transform duration-800 ease-in-out"></i>
+                    </a>
+                    <a href="https://github.com/wiki-152" title="GitHub"
+                        class="text-gray-600 hover:text-red-500 transition-colors duration-800 ease-in-out">
+                        <i
+                            class="fab fa-github transform hover:scale-125 transition-transform duration-800 ease-in-out"></i>
+                    </a>
+                    <a href="https://leetcode.com/wiki_152/" title="LeetCode"
+                        class="text-gray-600 hover:text-yellow-500 transition-colors duration-800 ease-in-out">
+                        <i
+                            class="fas fa-code transform hover:scale-125 transition-transform duration-800 ease-in-out"></i>
+                    </a>
+                </div>
+
             </div>
+
         </div>
     </main>
-
 
     <footer class="p-3">
         <p class="text-center">© 2024 Muhammad Waqas Shahid Khan</p>
