@@ -1,3 +1,11 @@
+<!--TO DO
+
+--Fix Infinite Loop
+
+--Fix Images
+
+
+-->
 <!DOCTYPE html>
 <html lang="en" class="dark">
 
@@ -56,11 +64,11 @@
             font-style: italic;
             /* Ensure the italic style is applied */
             -webkit-font-smoothing: antialiased;
-            /* Enhance font rendering on Safari */
-            text-rendering: optimizeLegibility;
             /* Standard property for better text rendering */
             -webkit-text-rendering: optimizeLegibility;
             /* For better text rendering in Webkit-based browsers */
+            /* Enhance font rendering on Safari */
+            text-rendering: optimizeLegibility;
         }
 
         .blinder {
@@ -97,8 +105,7 @@
             padding: 20px;
             overflow: hidden;
             width: 100%;
-            height: calc(100vh - 120px);
-            /* Adjusting height */
+
         }
 
         footer {
@@ -127,11 +134,35 @@
 
         .image-slider {
             display: flex;
+            justify-content: center;
+            align-items: center;
             gap: 20px;
             animation: slideRightToLeft 500s linear infinite;
             width: 200%;
 
         }
+
+        @media only screen and (max-width: 768px) {
+            .image-slider {
+                animation: slideRightToLeft 150s linear infinite;
+                /* Speed up the animation by reducing duration */
+            }
+
+            .image-box {
+                width: 250px;
+                /* Adjust width for smaller screens */
+                height: 300px;
+                /* Adjust height for smaller screens */
+            }
+
+            main {
+                justify-content: center;
+                align-items: center;
+                height: auto;
+                /* Make height auto to accommodate smaller heights */
+            }
+        }
+
 
         .image-box {
             opacity: 0.9;
@@ -165,9 +196,9 @@
             }
 
             .image-box {
-                width: 300px;
+                width: 250px;
                 /* Adjust width for smaller screens */
-                height: 350px;
+                height: 300px;
                 /* Adjust height for smaller screens */
             }
         }
