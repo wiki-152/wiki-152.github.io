@@ -117,20 +117,6 @@
             color: #fff;
         }
 
-        /* Add mobile-specific styles */
-        @media only screen and (max-width: 768px) {
-            footer {
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-                padding: 1rem;
-                text-align: center;
-                background-color: #000000;
-                color: #fff;
-            }
-
-        }
-
         .image-slider {
             display: flex;
             justify-content: center;
@@ -140,27 +126,6 @@
             width: 200%;
 
         }
-
-        @media only screen and (max-width: 768px) {
-            .image-slider {
-                animation: slideRightToLeft 150s linear infinite;
-                /* Speed up the animation by reducing duration */
-                margin-top: -12.5vh; /* Move slider up for mobile */
-            }
-
-            .image-box {
-                width: 250px;
-                /* Adjust width for smaller screens */
-                height: 300px;
-                /* Adjust height for smaller screens */
-            }
-
-            main {
-                justify-content: center;
-                align-items: center;
-            }
-        }
-
 
         .image-box {
             opacity: 0.9;
@@ -180,27 +145,6 @@
             transform: scale(1.15);
             transition: transform 0.6s ease;
         }
-
-        /* Add mobile-specific styles */
-        @media only screen and (max-width: 768px) {
-            footer {
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-                padding: 1rem;
-                text-align: center;
-                background-color: #000000;
-                color: #fff;
-            }
-
-            .image-box {
-                width: 250px;
-                /* Adjust width for smaller screens */
-                height: 300px;
-                /* Adjust height for smaller screens */
-            }
-        }
-
 
         .image-part {
             flex: 2;
@@ -233,6 +177,60 @@
 
         input[type="checkbox"]:checked~ul {
             display: block;
+        }
+
+        /* Add mobile-specific styles */
+        @media only screen and (max-width: 768px) {
+            footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                padding: 1rem;
+                text-align: center;
+                background-color: #000000;
+                color: #fff;
+            }
+
+        }
+
+        @media only screen and (max-width: 768px) {
+            .image-slider {
+                animation: slideRightToLeft 150s linear infinite;
+                /* Speed up the animation by reducing duration */
+                margin-top: -12.5vh; /* Move slider up for mobile */
+            }
+
+            .image-box {
+                width: 250px;
+                /* Adjust width for smaller screens */
+                height: 300px;
+                /* Adjust height for smaller screens */
+            }
+
+            main {
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        /* Add mobile-specific styles */
+        @media only screen and (max-width: 768px) {
+            footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                padding: 1rem;
+                text-align: center;
+                background-color: #000000;
+                color: #fff;
+            }
+
+            .image-box {
+                width: 250px;
+                /* Adjust width for smaller screens */
+                height: 300px;
+                /* Adjust height for smaller screens */
+            }
         }
     </style>
 
