@@ -24,8 +24,69 @@
             z-index: 0;
         }
 
+        /* Typing effect */
+        .typing-container {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2em;
+            color: #fff;
+            border-right: 2px solid #fff;
+            width: 24ch;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 4s steps(24), blink 0.5s step-end infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 24ch; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* 3D Buttons */
+        .buttons-container {
+            position: absolute;
+            bottom: 25%; /* Adjusted for visibility */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1;
+        }
+
+        .button-3d {
+            background: linear-gradient(145deg, #555, #222);
+            border: none;
+            color: #fff;
+            padding: 15px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-radius: 8px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+            min-width: 150px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .button-3d:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .button-3d:active {
+            transform: translateY(2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+        }
+
         /* Greetings styles for dynamic creation */
-        .greeting, .typing-container, .button-3d {
+        .greeting {
             position: absolute;
             color: #fff;
             font-size: 1.5em;
@@ -39,19 +100,19 @@
             75% { opacity: 1; }
             100% { transform: translateY(0px); opacity: 0; }
         }
-
-        /* Typing animation */
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 24ch; }
-        }
-
-        @keyframes blink {
-            50% { border-color: transparent; }
-        }
     </style>
 </head>
 <body>
+    <div class="typing-container">
+        Hi, I am Waqas...
+    </div>
+
+    <div class="buttons-container">
+        <button class="button-3d">Software Engineer</button>
+        <button class="button-3d">Video Editor</button>
+        <button class="button-3d">AI Image Artist</button>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
 </body>

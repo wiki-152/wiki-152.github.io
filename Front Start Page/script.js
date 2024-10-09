@@ -16,7 +16,7 @@ camera.lookAt(0, 0, 0);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
-renderer.domElement.id = 'three-canvas'; // Assign an ID to the canvas for styling
+renderer.domElement.id = 'three-canvas';
 document.body.appendChild(renderer.domElement);
 
 const rotationGroup = new THREE.Group();
@@ -85,7 +85,7 @@ function createTypingText() {
     typingContainer.className = 'typing-container';
     typingContainer.textContent = 'Hi, I am Waqas...';
     typingContainer.style.position = 'absolute';
-    typingContainer.style.top = '40%';
+    typingContainer.style.top = '30%';
     typingContainer.style.left = '50%';
     typingContainer.style.transform = 'translate(-50%, -50%)';
     typingContainer.style.fontSize = '2em';
@@ -102,12 +102,13 @@ function createTypingText() {
 function createButtons() {
     const buttonsContainer = document.createElement('div');
     buttonsContainer.style.position = 'absolute';
-    buttonsContainer.style.bottom = '10%';
+    buttonsContainer.style.bottom = '25%'; // Move buttons up to make them more visible
     buttonsContainer.style.left = '50%';
     buttonsContainer.style.transform = 'translateX(-50%)';
     buttonsContainer.style.display = 'flex';
+    buttonsContainer.style.justifyContent = 'center';
     buttonsContainer.style.gap = '20px';
-    buttonsContainer.style.pointerEvents = 'none';
+    buttonsContainer.style.pointerEvents = 'auto';
 
     const buttonLabels = ['Software Engineer', 'Video Editor', 'AI Image Artist'];
     buttonLabels.forEach(label => {
@@ -116,12 +117,16 @@ function createButtons() {
         button.textContent = label;
         button.style.background = 'linear-gradient(145deg, #555, #222)';
         button.style.color = '#fff';
-        button.style.padding = '15px 30px';
+        button.style.padding = '15px 20px';
         button.style.fontSize = '1em';
         button.style.borderRadius = '8px';
         button.style.cursor = 'pointer';
         button.style.boxShadow = '0 6px 10px rgba(0,0,0,0.5)';
         button.style.transition = 'transform 0.2s, box-shadow 0.2s';
+        button.style.border = 'none';
+        button.style.minWidth = '150px';
+        button.style.textAlign = 'center';
+        button.style.whiteSpace = 'nowrap';
 
         // Add hover effect
         button.addEventListener('mouseenter', () => {
@@ -149,6 +154,7 @@ function createGreeting(text) {
     const greeting = document.createElement('div');
     greeting.className = 'greeting';
     greeting.textContent = text;
+    greeting.style.position = 'absolute';
     greeting.style.left = `${Math.random() * 80 + 10}%`;
     greeting.style.top = `${Math.random() * 80 + 10}%`;
     greeting.style.animation = 'pop-up 4s ease-in-out infinite';
