@@ -1,0 +1,65 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #000;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* Typing effect */
+.typing-container {
+    text-align: center;
+    color: #fff;
+    font-size: 2em;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #fff;
+    width: 24ch;
+    animation: typing 4s steps(24), blink 0.5s step-end infinite alternate;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 24ch; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+/* 3D Buttons */
+.buttons-container {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+}
+
+.button-3d {
+    background: linear-gradient(145deg, #555, #222);
+    border: none;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 8px;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.5);
+}
+
+.button-3d:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.7);
+}
+
+.button-3d:active {
+    transform: translateY(2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+}
