@@ -89,8 +89,20 @@ function createGreeting(text) {
     const greeting = document.createElement('div');
     greeting.className = 'greeting';
     greeting.textContent = text;
-    greeting.style.left = `${Math.random() * 80 + 10}%`;
-    greeting.style.top = `${Math.random() * 80 + 10}%`;
+
+    // Restrict horizontal position to avoid the "Hi, I am Waqas..." text in the center
+    const leftArea = Math.random() < 0.5;
+    const x = leftArea
+        ? Math.random() * (window.innerWidth * 0.3) // Left side (0 to 30% of screen width)
+        : Math.random() * (window.innerWidth * 0.3) + window.innerWidth * 0.7; // Right side (70% to 100% of screen width)
+
+    // Allow greetings to appear in the entire vertical range except the center where the buttons are
+    const minTop = window.innerHeight * 0.1; // Avoid very top of the page
+    const maxTop = window.innerHeight * 0.9; // Avoid very bottom of the page
+    const y = Math.random() * (maxTop - minTop) + minTop; // Random vertical position
+
+    greeting.style.left = `${x}px`;
+    greeting.style.top = `${y}px`;
     greeting.style.animation = 'pop-up 4s ease-in-out infinite';
     document.body.appendChild(greeting);
 
