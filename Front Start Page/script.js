@@ -1,12 +1,11 @@
-// Create the scene, camera, and renderer (unchanged from your existing setup)
+// Create the scene, camera, and renderer for the 3D background
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000);
 
-// Add lights for the scene
-const ambientLight = new THREE.AmbientLight(0x404040, 2); // Increase intensity for brighter ambient lighting
+const ambientLight = new THREE.AmbientLight(0x404040, 2);
 scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 2); // Strong directional light
+const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
 directionalLight.position.set(1, 1, 1).normalize();
 scene.add(directionalLight);
 
@@ -14,23 +13,21 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 camera.position.set(0, 1, 5);
 camera.lookAt(0, 0, 0);
 
-// Create the renderer and attach it to the DOM (integrate this part with your HTML)
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
+renderer.domElement.id = 'three-canvas'; // Assign an ID to the canvas for styling
 document.body.appendChild(renderer.domElement);
 
-// Create a parent group for rotation
 const rotationGroup = new THREE.Group();
 scene.add(rotationGroup);
 
-// Create a Galaxy with randomly colored stars
 let stars;
-const createStars = true; // Enable stars
+const createStars = true;
 
 function getStarSize() {
     const screenWidth = window.innerWidth;
-    return screenWidth <= 768 ? 5.0 : 0.5; // Larger stars on mobile, smaller on desktop
+    return screenWidth <= 768 ? 5.0 : 0.5;
 }
 
 if (createStars) {
@@ -42,9 +39,8 @@ if (createStars) {
 
     const starVertices = [];
     const starColors = [];
-    const colorOptions = [0xffffff, 0xffd700, 0x87ceeb, 0xff4500]; // Natural star colors
+    const colorOptions = [0xffffff, 0xffd700, 0x87ceeb, 0xff4500];
 
-    // Generate star positions and colors
     for (let i = 0; i < 25000; i++) {
         const x = (Math.random() - 0.5) * 20000;
         const y = (Math.random() - 0.5) * 20000;
@@ -59,10 +55,9 @@ if (createStars) {
     starGeometry.setAttribute('color', new THREE.Float32BufferAttribute(starColors, 3));
 
     stars = new THREE.Points(starGeometry, starMaterial);
-    rotationGroup.add(stars); // Add stars to the rotation group
+    rotationGroup.add(stars);
 }
 
-// Handle window resize for responsive star sizing
 window.addEventListener('resize', () => {
     const width = window.innerWidth;
     const height = window.innerHeight;
@@ -71,20 +66,107 @@ window.addEventListener('resize', () => {
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
 
-    // Update star size on screen resize
     if (stars) {
         stars.material.size = getStarSize();
     }
 });
 
-// Animation loop to render the scene and apply rotations
 function animate() {
     requestAnimationFrame(animate);
-
-    // Rotate the stars slightly for a slow, dynamic background
     rotationGroup.rotation.y += 0.0005;
-
     renderer.render(scene, camera);
 }
 
 animate();
+
+// Create a text element with typing effect
+function createTypingText() {
+    const typingContainer = document.createElement('div');
+    typingContainer.className = 'typing-container';
+    typingContainer.textContent = 'Hi, I am Waqas...';
+    typingContainer.style.position = 'absolute';
+    typingContainer.style.top = '40%';
+    typingContainer.style.left = '50%';
+    typingContainer.style.transform = 'translate(-50%, -50%)';
+    typingContainer.style.fontSize = '2em';
+    typingContainer.style.color = '#fff';
+    typingContainer.style.borderRight = '2px solid #fff';
+    typingContainer.style.width = '24ch';
+    typingContainer.style.overflow = 'hidden';
+    typingContainer.style.whiteSpace = 'nowrap';
+    typingContainer.style.animation = 'typing 4s steps(24), blink 0.5s step-end infinite alternate';
+    document.body.appendChild(typingContainer);
+}
+
+// Create buttons dynamically
+function createButtons() {
+    const buttonsContainer = document.createElement('div');
+    buttonsContainer.style.position = 'absolute';
+    buttonsContainer.style.bottom = '10%';
+    buttonsContainer.style.left = '50%';
+    buttonsContainer.style.transform = 'translateX(-50%)';
+    buttonsContainer.style.display = 'flex';
+    buttonsContainer.style.gap = '20px';
+    buttonsContainer.style.pointerEvents = 'none';
+
+    const buttonLabels = ['Software Engineer', 'Video Editor', 'AI Image Artist'];
+    buttonLabels.forEach(label => {
+        const button = document.createElement('button');
+        button.className = 'button-3d';
+        button.textContent = label;
+        button.style.background = 'linear-gradient(145deg, #555, #222)';
+        button.style.color = '#fff';
+        button.style.padding = '15px 30px';
+        button.style.fontSize = '1em';
+        button.style.borderRadius = '8px';
+        button.style.cursor = 'pointer';
+        button.style.boxShadow = '0 6px 10px rgba(0,0,0,0.5)';
+        button.style.transition = 'transform 0.2s, box-shadow 0.2s';
+
+        // Add hover effect
+        button.addEventListener('mouseenter', () => {
+            button.style.transform = 'translateY(-4px)';
+            button.style.boxShadow = '0 10px 15px rgba(0,0,0,0.7)';
+        });
+        button.addEventListener('mouseleave', () => {
+            button.style.transform = 'translateY(0)';
+            button.style.boxShadow = '0 6px 10px rgba(0,0,0,0.5)';
+        });
+
+        buttonsContainer.appendChild(button);
+    });
+
+    document.body.appendChild(buttonsContainer);
+}
+
+// Pop-up greetings functionality
+const greetings = [
+    "Hello", "Hola", "Bonjour", "Hallo", "Ciao",
+    "Konnichiwa", "Namaste", "Salaam", "Zdravstvuyte", "Annyeong"
+];
+
+function createGreeting(text) {
+    const greeting = document.createElement('div');
+    greeting.className = 'greeting';
+    greeting.textContent = text;
+    greeting.style.left = `${Math.random() * 80 + 10}%`;
+    greeting.style.top = `${Math.random() * 80 + 10}%`;
+    greeting.style.animation = 'pop-up 4s ease-in-out infinite';
+    document.body.appendChild(greeting);
+
+    setTimeout(() => {
+        greeting.remove();
+    }, 6000);
+}
+
+function generateGreetings() {
+    setInterval(() => {
+        const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+        createGreeting(randomGreeting);
+    }, 1000);
+}
+
+// Initialize text, buttons, and greetings
+createTypingText();
+createButtons();
+generateGreetings();

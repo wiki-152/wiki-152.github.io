@@ -4,19 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Waqas Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: transparent;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Ensure 3D scene is visible with overlays */
+        #three-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        /* Greetings styles for dynamic creation */
+        .greeting, .typing-container, .button-3d {
+            position: absolute;
+            color: #fff;
+            font-size: 1.5em;
+            pointer-events: none;
+        }
+
+        @keyframes pop-up {
+            0% { transform: translateY(0px); opacity: 0; }
+            25% { opacity: 1; }
+            50% { transform: translateY(-30px); }
+            75% { opacity: 1; }
+            100% { transform: translateY(0px); opacity: 0; }
+        }
+
+        /* Typing animation */
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 24ch; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+    </style>
 </head>
 <body>
-    <div class="typing-container">
-        Hi, I am Waqas...
-    </div>
-
-    <div class="buttons-container">
-        <button class="button-3d">Software Engineer</button>
-        <button class="button-3d">Video Editor</button>
-        <button class="button-3d">AI Image Artist</button>
-    </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
 </body>
