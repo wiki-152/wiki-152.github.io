@@ -15,8 +15,6 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
-
-
     <style>
         @keyframes slideDown {
             from {
@@ -30,27 +28,10 @@
             }
         }
 
-        @keyframes slideUp {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0%);
-                opacity: 1;
-            }
-        }
-
         .font-italic1 {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            /* Ensure the italic style is applied */
             -webkit-font-smoothing: antialiased;
-            /* Standard property for better text rendering */
-            -webkit-text-rendering: optimizeLegibility;
-            /* For better text rendering in Webkit-based browsers */
-            /* Enhance font rendering on Safari */
             text-rendering: optimizeLegibility;
         }
 
@@ -89,17 +70,34 @@
             width: 100%;
         }
 
-        footer {
-            position: relative;
-            bottom: 0;
-            width: 100%;
-            padding: 1rem;
-            text-align: center;
-            background-color: #131515;
-            color: #fff;
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 1.5rem;
         }
 
-        /* Add mobile-specific styles */
+        .skills-grid-item {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .skills-grid-item:hover {
+            transform: scale(1.1);
+        }
+
+        .skills-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-grid-item p {
+            margin-top: 0.5rem;
+        }
+
         @media only screen and (max-width: 768px) {
             footer {
                 position: relative;
@@ -110,24 +108,6 @@
                 background-color: #000000;
                 color: #fff;
             }
-
-        }
-
-        .profile {
-            width: 250px;
-            height: 250px;
-            border-radius: 20px;
-            margin-right: 20px;
-            object-fit: cover;
-            flex-shrink: 0;
-        }
-
-        .hover-glow:hover {
-            text-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
-        }
-
-        input[type="checkbox"]:checked~ul {
-            display: block;
         }
     </style>
 
@@ -144,7 +124,6 @@
                         italic1: ['"Playfair Display"', 'serif'],
                         italic2: ['"Dancing Script"', 'cursive'],
                         unique: ['Poppins', 'sans-serif'],
-
                     }
                 }
             }
@@ -158,11 +137,9 @@
 
     <header class="p-3">
         <nav class="w-full flex justify-between items-center relative z-50">
-
             <div class="flex justify-between items-center w-full">
-
                 <h1 class="text-2xl font-bold">
-                    <img src="./images/logo.png" alt="logo" class="w-[10rem] sm:w-44 md:w-48 lg:w-52 xl:w-56 h-auto">
+                    <img src="images/logo.png" alt="logo" class="w-[10rem] sm:w-44 md:w-48 lg:w-52 xl:w-56 h-auto">
                 </h1>
 
                 <!-- Mobile menu toggle -->
@@ -200,40 +177,40 @@
                             class="hover:text-primary hover-glow hover:scale-105 transition-all duration-300 block p-2">Contact</a>
                     </li>
                 </ul>
-
             </div>
         </nav>
     </header>
 
-
-    <!--<main class="font-italic1 container mx-auto flex-grow flex flex-col items-center justify-center px-4 relative"> OLD-->
     <main class="font-italic1 flex-grow flex flex-col items-center justify-center px-4 relative">
-
         <section class="w-full p-6 mb-6 bg-black bg-opacity-50 rounded-lg backdrop-blur-md">
             <h2 class="text-2xl font-bold mb-4 text-center">Skills</h2>
-            <div class="space-y-2">
-                <div class="bg-gray-700 rounded-full overflow-hidden">
-                    <div class="bg-[#666666] text-xs font-medium text-white text-center p-0.5 leading-none w-[90%]">Python - 90%</div>
+            <div class="skills-grid">
+                <div class="skills-grid-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="skills-icon">
+                    <p>Python</p>
                 </div>
-                <div class="bg-gray-700 rounded-full overflow-hidden">
-                    <div class="bg-[#666666] text-xs font-medium text-white text-center p-0.5 leading-none w-[75%]">JavaScript - 75%</div>
+                <div class="skills-grid-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="skills-icon">
+                    <p>JavaScript</p>
                 </div>
-                <div class="bg-gray-700 rounded-full overflow-hidden">
-                    <div class="bg-[#666666] text-xs font-medium text-white text-center p-0.5 leading-none w-[90%]">C++ - 90%</div>
+                <div class="skills-grid-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" class="skills-icon">
+                    <p>C++</p>
                 </div>
-                <div class="bg-gray-700 rounded-full overflow-hidden">
-                    <div class="bg-[#666666] text-xs font-medium text-white text-center p-0.5 leading-none w-[65%]">C# - 65%</div>
+                <div class="skills-grid-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" class="skills-icon">
+                    <p>C#</p>
                 </div>
-                <div class="bg-gray-700 rounded-full overflow-hidden">
-                    <div class="bg-[#666666] text-xs font-medium text-white text-center p-0.5 leading-none w-[80%]">Spring Boot - 80%</div>
+                <div class="skills-grid-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring Boot" class="skills-icon">
+                    <p>Spring Boot</p>
                 </div>
-                <div class="bg-gray-700 rounded-full overflow-hidden">
-                    <div class="bg-[#666666] text-xs font-medium text-white text-center p-0.5 leading-none w-[75%]">.Net - 75%</div>
+                <div class="skills-grid-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" alt=".NET" class="skills-icon">
+                    <p>.NET</p>
                 </div>
             </div>
-            
         </section>
-
 
         <section class="w-full p-6 bg-black bg-opacity-50 rounded-lg backdrop-blur-md">
             <h2 class="text-2xl font-bold mb-4 text-center">Interests</h2>
@@ -247,9 +224,6 @@
             </p>
         </section>
     </main>
-
-
-
 
     <footer class="p-3">
         <div class="container mx-auto text-center text-gray-400">
