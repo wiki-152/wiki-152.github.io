@@ -104,7 +104,7 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            overflow: hidden;
+            overflow: auto;
             width: 100%;
             height: calc(100vh - 120px);
         }
@@ -171,6 +171,11 @@
                 color: #fff;
             }
 
+            .image-slider {
+                animation: slideRightToLeft 100s linear infinite;
+                width: 200%;
+            }
+
             .image-box {
                 width: 300px;
                 /* Adjust width for smaller screens */
@@ -178,6 +183,18 @@
                 /* Adjust height for smaller screens */
             }
         }
+
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            .image-slider {
+                animation: slideRightToLeft 200s linear infinite;
+                width: 200%;
+            }
+
+            .image-box {
+                width: 350px;
+                height: 400px;
+            }
+        } 
 
 
         .image-part {
@@ -303,7 +320,7 @@
     </header>
 
     <button id="toggleAnimation"
-        class="mt-4 p-2 bg-blue-500 text-white rounded hover:bg-gray-700 backdrop-blur-lg bg-opacity-30">
+        class="p-2 bg-blue-500 text-white rounded hover:bg-gray-700 backdrop-blur-lg bg-opacity-30">
         Stop Animation
     </button>
 
