@@ -31,7 +31,7 @@
             }
 
             100% {
-                transform: translateX(-700%);
+                transform: translateX(-100%);
             }
         }
 
@@ -104,7 +104,7 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            overflow: auto;
+            overflow: hidden;
             width: 100%;
             height: calc(100vh - 120px);
         }
@@ -136,8 +136,9 @@
         .image-slider {
             display: flex;
             gap: 20px;
-            animation: slideRightToLeft 500s linear infinite;
-            width: 200%;
+            animation: slideRightToLeft 45s linear infinite;
+            width: calc(400px * 8 + 160px); /* Assuming 8 images, 400px each, 20px gap */
+            height: 450px;
         }
 
         .image-box {
@@ -172,7 +173,7 @@
             }
 
             .image-slider {
-                animation: slideRightToLeft 100s linear infinite;
+                animation: slideRightToLeft 15s linear infinite;
                 width: 200%;
             }
 
@@ -186,7 +187,7 @@
 
         @media only screen and (min-width: 768px) and (max-width: 1024px) {
             .image-slider {
-                animation: slideRightToLeft 200s linear infinite;
+                animation: slideRightToLeft 25s linear infinite;
                 width: 200%;
             }
 
@@ -454,7 +455,7 @@
 
 
 
-            <!-- Duplicate set of images for seamless looping -->
+            <!-- Duplicate set of images for seamless looping
             <div class="image-box">
                 <div class="image-part ">
                     <img src="./images/cc.png" alt="Project 1">
@@ -573,7 +574,7 @@
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
-            </div>
+            </div> -->
 
     </main>
 
