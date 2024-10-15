@@ -214,6 +214,18 @@
         input[type="checkbox"]:checked~ul {
             display: block;
         }
+
+        #toggleAnimation {
+            backdrop-filter: blur(20px);
+            background-color: rgba(255, 255, 255, 0.1);
+            /* #131515*/
+            transition: background-color 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+        }
+
+        #toggleAnimation:hover {
+            background-color: rgba(51, 50, 50, 0.1);
+            backdrop-filter: blur(15px);
+        }
     </style>
 
     <script>
@@ -290,8 +302,16 @@
         </nav>
     </header>
 
+    <button id="toggleAnimation"
+        class="mt-4 p-2 bg-blue-500 text-white rounded hover:bg-gray-700 backdrop-blur-lg bg-opacity-30">
+        Stop Animation
+    </button>
+
+
     <!--<main class="container mx-auto flex items-center justify-center px-4 relative"> OLD-->
     <main class="font-italic1 flex-grow flex items-center justify-center px-4 relative">
+
+
         <div class="image-slider">
             <div class="image-box">
                 <div class="image-part ">
@@ -343,9 +363,9 @@
                     <img src="./images/p1.png" alt="Project 4">
                 </div>
                 <div class="text-part p-3">
-                    <h3 class="font-italic1 font-bold text-lg md:text-xl">Tic Tac Toe</h3> <br>
-                    <p class="text-sm md:text-base">A classic Tic Tac Toe game built with Java.</p><br>
-                    <p class="text-sm md:text-base">Tech: Java</p><br>
+                    <h3 class="font-italic1 font-bold text-lg md:text-xl">2D Battleship Game</h3> <br>
+                    <p class="text-sm md:text-base">A classic Battleship game built with OpenGL.</p><br>
+                    <p class="text-sm md:text-base">Tech: C++</p><br>
                     <a href="https://github.com/wiki-152" target="_blank" rel="noopener"
                         class="text-primary hover:text-blue-500">
                         <i class="fab fa-github"></i> GitHub
@@ -545,6 +565,24 @@
             &copy; 2024 Muhammad Waqas Shahid Khan
         </div>
     </footer>
+
+    <script>
+        const slider = document.querySelector('.image-slider');
+        const toggleButton = document.getElementById('toggleAnimation');
+        let isAnimationRunning = true;
+
+        toggleButton.addEventListener('click', () => {
+            if (isAnimationRunning) {
+                slider.style.animationPlayState = 'paused';
+                toggleButton.textContent = 'Resume Animation';
+            } else {
+                slider.style.animationPlayState = 'running';
+                toggleButton.textContent = 'Stop Animation';
+            }
+            isAnimationRunning = !isAnimationRunning;
+        });
+    </script>
+
 </body>
 
 </html>
