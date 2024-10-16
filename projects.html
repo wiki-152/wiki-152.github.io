@@ -133,7 +133,8 @@
             display: flex;
             gap: 20px;
             animation: slideRightToLeft 45s linear infinite;
-            width: calc(400px * 8 + 160px); /* Assuming 8 images, 400px each, 20px gap */
+            width: calc(400px * 8 + 160px);
+            /* Assuming 8 images, 400px each, 20px gap */
             height: 450px;
         }
 
@@ -151,10 +152,15 @@
         }
 
         .image-box:hover {
-            transform: scale(1.15);
+            transform: scale(1.07);
             transition: transform 0.6s ease;
 
+
         }
+
+        /* .image-slider:hover {
+            animation-play-state: paused; 
+        } */
 
         /* Add mobile-specific styles */
         @media only screen and (max-width: 768px) {
@@ -191,7 +197,7 @@
                 width: 350px;
                 height: 400px;
             }
-        } 
+        }
 
 
         .image-part {
@@ -591,7 +597,7 @@
                             class="fab fa-github transform hover:scale-125 transition-transform duration-800 ease-in-out"></i>
                     </a>
                 </div>
-            </div> 
+            </div>
 
     </main>
 
@@ -616,6 +622,19 @@
             }
             isAnimationRunning = !isAnimationRunning;
         });
+
+        const imageBoxes = document.querySelectorAll('.image-box');
+
+        imageBoxes.forEach(imageBox => {
+            imageBox.addEventListener('mouseenter', () => {
+                slider.style.animationPlayState = 'paused';
+            });
+
+            imageBox.addEventListener('mouseleave', () => {
+                slider.style.animationPlayState = 'running';
+            });
+        });
+
     </script>
 
 </body>
