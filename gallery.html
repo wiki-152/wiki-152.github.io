@@ -115,10 +115,25 @@
             color: #fff;
         }
 
+        /* Add mobile-specific styles */
+        @media only screen and (max-width: 768px) {
+            footer {
+                position: relative;
+                bottom: 0;
+                width: 100%;
+                padding: 1rem;
+                text-align: center;
+                background-color: #000000;
+                color: #fff;
+            }
+
+        }
+
         .image-slider {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            /*These below 2 lines were causing loop issue*/
+            /* justify-content: center;
+            align-items: center; */
             gap: 20px;
             animation: slideRightToLeft 45s linear infinite;
             width: calc(400px * 8 + 160px);
@@ -192,20 +207,6 @@
         /* .fab:hover {
             transform: scale(2);
         } */
-
-        /* Add mobile-specific styles */
-        @media only screen and (max-width: 768px) {
-            footer {
-                position: relative;
-                bottom: 0;
-                width: 100%;
-                padding: 1rem;
-                text-align: center;
-                background-color: #000000;
-                color: #fff;
-            }
-
-        }
 
         @media only screen and (max-width: 768px) {
             .image-slider {
