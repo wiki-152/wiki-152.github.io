@@ -468,6 +468,37 @@
             &copy; 2024 Muhammad Waqas Shahid Khan
         </div>
     </footer>
+
+    <script>
+        const slider = document.querySelector('.image-slider');
+        const toggleButton = document.getElementById('toggleAnimation');
+        let isAnimationRunning = true;
+
+        toggleButton.addEventListener('click', () => {
+            if (isAnimationRunning) {
+                slider.style.animationPlayState = 'paused';
+                toggleButton.textContent = 'Resume Animation';
+            } else {
+                slider.style.animationPlayState = 'running';
+                toggleButton.textContent = 'Stop Animation';
+            }
+            isAnimationRunning = !isAnimationRunning;
+        });
+
+        const imageBoxes = document.querySelectorAll('.image-box');
+
+        imageBoxes.forEach(imageBox => {
+            imageBox.addEventListener('mouseenter', () => {
+                slider.style.animationPlayState = 'paused';
+            });
+
+            imageBox.addEventListener('mouseleave', () => {
+                slider.style.animationPlayState = 'running';
+            });
+        });
+
+    </script>
+    
 </body>
 
 </html>
