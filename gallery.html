@@ -31,7 +31,7 @@
 
             100% {
                 /*before -1500%*/
-                transform: translateX(-700%);
+                transform: translateX(-100%);
             }
         }
 
@@ -62,11 +62,8 @@
         .font-italic1 {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            /* Ensure the italic style is applied */
             -webkit-font-smoothing: antialiased;
-            /* Standard property for better text rendering */
             -webkit-text-rendering: optimizeLegibility;
-            /* For better text rendering in Webkit-based browsers */
             /* Enhance font rendering on Safari */
             text-rendering: optimizeLegibility;
         }
@@ -105,6 +102,7 @@
             padding: 20px;
             overflow: hidden;
             width: 100%;
+            height: calc(100vh - 120px);
         }
 
         footer {
@@ -122,8 +120,9 @@
             justify-content: center;
             align-items: center;
             gap: 20px;
-            animation: slideRightToLeft 500s linear infinite;
-            width: 200%;
+            animation: slideRightToLeft 45s linear infinite;
+            width: calc(400px * 8 + 160px);
+            height: 450px;
 
         }
 
@@ -142,7 +141,7 @@
 
         /* Consistent transition for states*/
         .image-box:hover {
-            transform: scale(1.15);
+            transform: scale(1.07);
             transition: transform 0.6s ease;
         }
 
@@ -179,6 +178,18 @@
             display: block;
         }
 
+        #toggleAnimation {
+            backdrop-filter: blur(20px);
+            background-color: rgba(255, 255, 255, 0.1);
+            /* #131515*/
+            transition: background-color 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+        }
+
+        #toggleAnimation:hover {
+            background-color: rgba(51, 50, 50, 0.1);
+            backdrop-filter: blur(15px);
+        }
+
         /* Add mobile-specific styles */
         @media only screen and (max-width: 768px) {
             footer {
@@ -195,15 +206,19 @@
 
         @media only screen and (max-width: 768px) {
             .image-slider {
-                animation: slideRightToLeft 150s linear infinite;
+                animation: slideRightToLeft 15s linear infinite;
                 /* Speed up the animation by reducing duration */
-                margin-top: -12.5vh; /* Move slider up for mobile */
+                width: 200%;
+
+                /*Moves Slider Up*/
+                /*margin-top: -12.5vh; /* Move slider up for mobile */
             }
 
             .image-box {
-                width: 250px;
+                /*From 250 300*/
+                width: 300px;
                 /* Adjust width for smaller screens */
-                height: 300px;
+                height: 350px;
                 /* Adjust height for smaller screens */
             }
 
@@ -213,25 +228,18 @@
             }
         }
 
-        /* Add mobile-specific styles */
-        @media only screen and (max-width: 768px) {
-            footer {
-                position: relative;
-                bottom: 0;
-                width: 100%;
-                padding: 1rem;
-                text-align: center;
-                background-color: #000000;
-                color: #fff;
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            .image-slider {
+                animation: slideRightToLeft 25s linear infinite;
+                width: 200%;
             }
 
             .image-box {
-                width: 250px;
-                /* Adjust width for smaller screens */
-                height: 300px;
-                /* Adjust height for smaller screens */
+                width: 350px;
+                height: 400px;
             }
         }
+
     </style>
 
     <script>
