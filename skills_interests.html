@@ -64,10 +64,23 @@
             background-position: center;
             background-repeat: no-repeat;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 20px;
+            overflow: hidden;
             width: 100%;
+            /* background-size: contain;
+            background-position: center; */
+        }
+
+        footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            padding: 1rem;
+            text-align: center;
+            background-color: #131515;
+            color: #fff;
         }
 
         .skills-grid {
@@ -109,6 +122,13 @@
                 color: #fff;
             }
         }
+
+        input[type="checkbox"]:checked~ul {
+            display: block;
+        }
+
+        
+        
     </style>
 
     <script>
@@ -182,7 +202,7 @@
     </header>
 
     <main class="font-italic1 flex-grow flex flex-col items-center justify-center px-4 relative">
-        <section class="w-full p-6 mb-6 bg-black bg-opacity-50 rounded-lg backdrop-blur-md">
+        <div class="w-full p-6 mb-6 bg-black bg-opacity-50 rounded-lg backdrop-blur-md">
             <h2 class="text-2xl font-bold mb-4 text-center">Skills</h2>
             <div class="skills-grid">
                 <!-- Programming Languages -->
@@ -301,10 +321,10 @@
                     <p>REST API</p>
                 </div>
             </div>
-        </section>
+        </div>
         
 
-        <section class="w-full p-6 bg-black bg-opacity-50 rounded-lg backdrop-blur-md">
+        <div class="w-full p-6 bg-black bg-opacity-50 rounded-lg backdrop-blur-md">
             <h2 class="text-2xl font-bold mb-4 text-center">Interests</h2>
             <p class="font-unique not-italic text-center mb-4">
                 As a software engineer, I have a keen interest in football and am passionate about aviation. I enjoy
@@ -314,7 +334,7 @@
                 Additionally, I participate in local football leagues, which helps me stay active and connect with my
                 community.
             </p>
-        </section>
+        </div>
     </main>
 
     <footer class="p-3">
