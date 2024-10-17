@@ -127,6 +127,53 @@
             display: block;
         }
 
+        #toggleButton{
+            backdrop-filter: blur(20px);
+            background-color: rgba(255, 255, 255, 0.1);
+            /* #131515*/
+            transition: background-color 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+        }
+
+        #toggleButton:hover {
+            background-color: rgba(51, 50, 50, 0.1);
+            backdrop-filter: blur(15px);
+        }
+
+
+        .hidden {
+    display: none;
+}
+
+.slide-left {
+    animation: slideLeft 5s forwards;
+}
+
+.slide-right {
+    animation: slideRight 5s forwards;
+}
+
+@keyframes slideLeft {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
         
         
     </style>
@@ -201,7 +248,16 @@
         </nav>
     </header>
 
+    
+    <button id="toggleButton" 
+        class="p-2 text-white rounded-lg hover:bg-gray-700 backdrop-blur-lg bg-opacity-30">
+        Show Interests
+    </button>
+
     <main class="font-italic1 flex-grow flex flex-col items-center justify-center px-4 relative">
+
+        
+
         <div class="w-full p-6 mb-6 bg-black bg-opacity-50 rounded-lg backdrop-blur-md">
             <h2 class="text-2xl font-bold mb-4 text-center">Skills</h2>
             <div class="skills-grid">
@@ -324,7 +380,7 @@
         </div>
         
 
-        <div class="w-full p-6 bg-black bg-opacity-50 rounded-lg backdrop-blur-md">
+        <div class="w-full p-6 bg-black bg-opacity-50 rounded-lg backdrop-blur-md hidden">
             <h2 class="text-2xl font-bold mb-4 text-center">Interests</h2>
             <p class="font-unique not-italic text-center mb-4">
                 As a software engineer, I have a keen interest in football and am passionate about aviation. I enjoy
@@ -342,6 +398,36 @@
             &copy; 2024 Muhammad Waqas Shahid Khan
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const skillsDiv = document.querySelector('.skills-grid').parentElement;
+            const interestsDiv = document.querySelector('p.font-unique').parentElement;
+            const toggleButton = document.getElementById('toggleButton');
+    
+            // Initially hide the interests div
+            interestsDiv.classList.add('hidden');
+    
+            // Function to toggle visibility
+            toggleButton.addEventListener('click', function () {
+                if (skillsDiv.classList.contains('hidden')) {
+                    // Move interests out and bring skills back
+                    interestsDiv.classList.add('slide-right');
+                    skillsDiv.classList.remove('slide-left', 'hidden');
+                    interestsDiv.classList.add('hidden');
+                    toggleButton.textContent = 'Show Interests';
+                } else {
+                    // Slide skills out and bring in interests
+                    skillsDiv.classList.add('slide-left');
+                    skillsDiv.classList.add('hidden');
+                    interestsDiv.classList.remove('hidden');
+                    interestsDiv.classList.remove('slide-right');
+                    toggleButton.textContent = 'Show Skills';
+                }
+            });
+        });
+    </script>
+    
 </body>
 
 </html>
